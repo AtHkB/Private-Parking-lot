@@ -1,58 +1,85 @@
-import { useState, useEffect, useRef } from "react";
+import React from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-const SearchBar = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const mapContainerRef = useRef(null);
-  const googleMapRef = useRef(null);
+const SearchBar = ({ onSearch, onSearchWithCriteria }) => {
+  const [query, setQuery] = React.useState("");
+  const [startDate, setStartDate] = React.useState(null);
+  const [endDate, setEndDate] = React.useState(null);
 
-  useEffect(() => {
-    // Load Google Maps API
-    const googleMapsScript = document.createElement("script");
-    googleMapsScript.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places`;
-    window.document.body.appendChild(googleMapsScript);
+  const handleChange = (event) => {
+    setQuery(event.target.value);
+  };
 
-    googleMapsScript.addEventListener("load", () => {
-      // Initialize the map once Google Maps API is loaded
-      const googleMap = new window.google.maps.Map(mapContainerRef.current, {
-        center: { lat: 51.505, lng: -0.09 },
-        zoom: 13,
-      });
-      googleMapRef.current = googleMap;
-      setIsLoaded(true);
-    });
-
-    return () => {
-      // Cleanup function to remove the script
-      window.document.body.removeChild(googleMapsScript);
-    };
-  }, []);
-
-  // Placeholder search bar content
-  const searchBarContent = (
-    <div className="search-bar">
-      <input type="text" placeholder="Enter location..." />
-      <button>Search</button>
-    </div>
-  );
-
-  if (!isLoaded) {
-    return (
-      <>
-        {searchBarContent}
-        <div>Loading...</div>
-      </>
-    );
-  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (startDate && endDate) {
+      onSearchWithCriteria(query, startDate, endDate);
+    } else {
+      onSearch(query);
+    }
+  };
 
   return (
-    <>
-      {searchBarContent}
-      <div
-        ref={mapContainerRef}
-        className="map"
-        style={{ width: "100%", height: "400px" }}
-      ></div>
-    </>
+    <div
+      className="relative flex flex-col items-center"
+      style={{
+        backgroundImage: `url('/background-image.jpg')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
+      }}
+    >
+      <p className="text-2xl text-red-500 mt-20 mb-4  text-decoration-color: #fff;">
+        Book a car park space by the hour, day or month
+      </p>
+      <form
+        onSubmit={handleSubmit}
+        className="w-3/4 mx-auto border mt-0 border-blue-400 rounded-md p-4 bg-white bg-opacity-90 "
+        style={{ zIndex: 10 }}
+      >
+        <input
+          type="text"
+          value={query}
+          onChange={handleChange}
+          placeholder="Search"
+          className="w-full py-2 px-4 mb-4 rounded-full focus:outline-none focus:ring focus:border-blue-300"
+        />
+        <div className="flex items-center justify-between">
+          <label htmlFor="startDate" className="text-blue-500 mr-2">
+            From:
+          </label>
+          <DatePicker
+            id="startDate"
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+            showTimeSelect
+            timeFormat="HH:mm"
+            timeIntervals={15}
+            dateFormat="MMMM d, yyyy h:mm aa"
+            className="w-5/12 py-2 px-4 rounded-full focus:outline-none focus:ring focus:border-blue-300"
+            placeholderText="From Date and Time"
+          />
+          <span className="text-blue-500 ml-2 mr-2">to</span>
+          <DatePicker
+            selected={endDate}
+            onChange={(date) => setEndDate(date)}
+            showTimeSelect
+            timeFormat="HH:mm"
+            timeIntervals={15}
+            dateFormat="MMMM d, yyyy h:mm aa"
+            className="w-5/12 py-2 px-4 rounded focus:outline-none focus:ring focus:border-blue-300"
+            placeholderText="To Date and Time"
+          />
+        </div>
+        <button
+          type="submit"
+          className="block mt-4 w-full py-2 px-4 bg-blue-500 text-white font-bold rounded-full hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+        >
+          Search
+        </button>
+      </form>
+    </div>
   );
 };
 
