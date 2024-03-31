@@ -29,9 +29,9 @@ const SearchBar = () => {
 
   // Placeholder search bar content
   const searchBarContent = (
-    <div className="search-bar">
-      <input type="text" placeholder="Enter location..." />
-      <button>Search</button>
+    <div className="search-bar flex">
+      <input className="" type="text" placeholder="Enter location..." />
+      <button className="">Search</button>
     </div>
   );
 
