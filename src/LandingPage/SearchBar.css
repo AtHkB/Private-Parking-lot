@@ -1,0 +1,13 @@
+/* SearchBar.css */
+
+.search-bar {
+  width: 100%; /* Ensure the search bar fills the width of its parent */
+  height: 400px; /* Set a fixed height for the search bar */
+}
+
+.map {
+  width: 100%; /* Set the width to fill the entire container */
+  height: 100%; /* Ensure the map container fills its parent container vertically */
+  border: 1px solid #ccc; /* Add a border for visual separation */
+  border-radius: 8px; /* Add some border radius for a softer look */
+}
