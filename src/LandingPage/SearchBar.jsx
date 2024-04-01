@@ -22,7 +22,7 @@ const SearchBar = ({ onSearch, onSearchWithCriteria }) => {
 
   return (
     <div
-      className="relative flex flex-col items-center"
+      className="relative flex items-center"
       style={{
         backgroundImage: `url('/background-image.jpg')`,
         backgroundSize: "cover",
@@ -30,23 +30,23 @@ const SearchBar = ({ onSearch, onSearchWithCriteria }) => {
         minHeight: "100vh",
       }}
     >
-      <p className="text-2xl text-red-500 mt-20 mb-4  text-decoration-color: #fff;">
+      {/* <p className="text-2xl text-red-500 mt-20 mb-4  text-decoration-color: #fff;">
         Book a car park space by the hour, day or month
-      </p>
+      </p> */}
       <form
         onSubmit={handleSubmit}
-        className="w-3/4 mx-auto border mt-0 border-blue-400 rounded-md p-4 bg-white bg-opacity-90 "
+        className="w-3/4 mx-auto border border-blue-400 rounded-2xl p-4 bg-white bg-opacity-90 "
         style={{ zIndex: 10 }}
       >
-        <input
-          type="text"
-          value={query}
-          onChange={handleChange}
-          placeholder="Search"
-          className="w-full py-2 px-4 mb-4 rounded-full focus:outline-none focus:ring focus:border-blue-300"
-        />
-        <div className="flex items-center justify-between">
-          <label htmlFor="startDate" className="text-blue-500 mr-2">
+        <div className="flex items-center gap-2 justify-between">
+          <input
+            type="text"
+            value={query}
+            onChange={handleChange}
+            placeholder="Search"
+            className="w-full py-2 px-4 rounded-full focus:outline-none focus:ring focus:border-blue-300"
+          />
+          <label htmlFor="startDate" className="text-blue-500 m-2">
             From:
           </label>
           <DatePicker
@@ -57,8 +57,8 @@ const SearchBar = ({ onSearch, onSearchWithCriteria }) => {
             timeFormat="HH:mm"
             timeIntervals={15}
             dateFormat="MMMM d, yyyy h:mm aa"
-            className="w-5/12 py-2 px-4 rounded-full focus:outline-none focus:ring focus:border-blue-300"
-            placeholderText="From Date and Time"
+            className="w-24 py-2 rounded-full focus:outline-none focus:ring focus:border-blue-300"
+            placeholderText="Date - Time"
           />
           <span className="text-blue-500 ml-2 mr-2">to</span>
           <DatePicker
@@ -68,16 +68,17 @@ const SearchBar = ({ onSearch, onSearchWithCriteria }) => {
             timeFormat="HH:mm"
             timeIntervals={15}
             dateFormat="MMMM d, yyyy h:mm aa"
-            className="w-5/12 py-2 px-4 rounded focus:outline-none focus:ring focus:border-blue-300"
-            placeholderText="To Date and Time"
+            className="w-24 py-2 rounded-full focus:outline-none focus:ring focus:border-blue-300"
+            placeholderText="Date - Time"
           />
+
+          <button
+            type="submit"
+            className="block w-auto py-2 px-4 bg-blue-500 text-white font-bold rounded-full hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+          >
+            Search
+          </button>
         </div>
-        <button
-          type="submit"
-          className="block mt-4 w-full py-2 px-4 bg-blue-500 text-white font-bold rounded-full hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-        >
-          Search
-        </button>
       </form>
     </div>
   );
