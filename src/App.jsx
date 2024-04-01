@@ -10,19 +10,17 @@ import MapPage from "./components/MapPage";
 const App = () => {
   return (
     <Router>
-      <div>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<SearchBar />}>
-            <Route index element={<ExplanationContainer />} />
-          </Route>
-          <Route path="map" element={<MapPage />} />
-          <Route path="/map/details/:id" element={<MapPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/auth" element={<AuthRouter />} />
-        </Routes>
-      </div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<SearchBar />}>
+          <Route index element={<ExplanationContainer />} />
+        </Route>
+        <Route path="map" element={<MapPage />} />
+        <Route path="/map/details/:id" element={<MapPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/auth" element={<AuthRouter />} />
+      </Routes>
     </Router>
   );
 };
