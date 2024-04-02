@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../context/authContext";
 import { useParams } from "react-router";
 import parkings from "../api/parkings.json";
 import { Link } from "react-router-dom";

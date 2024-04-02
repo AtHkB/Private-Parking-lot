@@ -1,13 +1,42 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../context/authContext";
 
 const LoginPage = () => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleLoginSubmit = (e) => {
+  const { token } = useContext(AuthContext);
+
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
     // Add your login logic here
-    console.log("Login data:", loginData);
+
+    setIsLoading(true);
+    setError(null);
+
+    const response = await fetch("http://localhost:8081/user/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      setIsLoading(false);
+      setError(data.error);
+    }
+
+    if (response.ok) {
+      localStorage.setItem("token", JSON.stringify(data)); /* or data.token? */
+      setIsLoading(false);
+      login(data.token);
+    }
   };
+
+  console.log("Login data:", loginData);
 
   return (
     <div className="logincontainer flex items-center">
@@ -27,7 +56,7 @@ const LoginPage = () => {
             id="username"
             type="email"
             placeholder="Email"
-            required="true"
+            required={true}
             value={loginData.email}
             onChange={(e) =>
               setLoginData({ ...loginData, email: e.target.value })
@@ -38,7 +67,7 @@ const LoginPage = () => {
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="password"
-            required="true"
+            required={true}
           >
             Password
           </label>
@@ -61,6 +90,7 @@ const LoginPage = () => {
             Login
           </button>
         </div>
+        {error && <div className="error">{error}</div>}
       </form>
       {/* <p className="text-center text-gray-500 text-xs">
         &copy;2024 Private Parking All rights reserved.
