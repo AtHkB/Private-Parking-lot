@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../context/authContext";
 /*import "./LandingPage/AuthPage.css"; */
 
 const SignupPage = () => {
@@ -14,10 +15,42 @@ const SignupPage = () => {
     instructions: "",
     idCard: null,
   });
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const { login } = useContext(AuthContext);
 
-  const handleSignupSubmit = (e) => {
+  const handleSignupSubmit = async (e) => {
     e.preventDefault();
     // Add your signup logic here
+    setIsLoading(true);
+    setError(null);
+
+    const response = await fetch("http://localhost:8081/user/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        password,
+        fullName,
+        postalcode,
+        streetNumber,
+        houseNumber,
+        instructions,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      setIsLoading(false);
+      setError(data.error);
+    }
+
+    if (response.ok) {
+      localStorage.setItem("token", data.token); /* or data.token? */
+      setIsLoading(false);
+      login(data.token);
+    }
     console.log("Signup data:", signupData);
   };
 
