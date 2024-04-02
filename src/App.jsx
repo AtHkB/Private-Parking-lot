@@ -8,6 +8,12 @@ import AuthRouter from "./LandingPage/AuthRouter"; // Import the AuthRouter comp
 import MapPage from "./components/MapPage";
 
 const App = () => {
+  /* whenever fetching from the backend, keep 2 variables, 1 for the local backend and 1 for the deplozed backend
+  const localAPI= localAPI
+  const deployedAPI = https://private-parking-lot-api.onrender.com/
+  use this to fetch await data
+  */
+
   return (
     <Router>
       <Navbar />
