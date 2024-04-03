@@ -1,8 +1,14 @@
+import explImage from "../assets/expl.png";
+
 const ExplanationContainer = () => {
   return (
-    <div>
-      <h2>About Us</h2>
-      <p>This is a brief explanation about the website...</p>
+    <div className="relative z-10">
+      <img
+        src={explImage}
+        alt="Explanation"
+        className="w-100 h-auto ml-4"
+        style={{ width: "200px", height: "auto", marginLeft: "1rem" }}
+      />
     </div>
   );
 };

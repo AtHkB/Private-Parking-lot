@@ -4,21 +4,16 @@ import SearchBar from "./LandingPage/SearchBar";
 import ExplanationContainer from "./LandingPage/ExplanationContainer";
 import LoginPage from "./LandingPage/LoginPage";
 import SignupPage from "./LandingPage/SignupPage";
-import AuthRouter from "./LandingPage/AuthRouter"; // Import the AuthRouter component
+import AuthRouter from "./LandingPage/AuthRouter";
 import MapPage from "./components/MapPage";
 
 const App = () => {
-  /* whenever fetching from the backend, keep 2 variables, 1 for the local backend and 1 for the deplozed backend
-  const localAPI= localAPI
-  const deployedAPI = https://private-parking-lot-api.onrender.com/
-  use this to fetch await data
-  */
-
   return (
     <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={<SearchBar />}>
+          {/* Render ExplanationContainer directly within the main route */}
           <Route index element={<ExplanationContainer />} />
         </Route>
         <Route path="map" element={<MapPage />} />
