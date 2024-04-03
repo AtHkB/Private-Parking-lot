@@ -21,6 +21,11 @@ const SignupPage = () => {
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
+
+    if (signupData.password !== signupData.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
     // Add your signup logic here
     setIsLoading(true);
     setError(null);
@@ -29,13 +34,13 @@ const SignupPage = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        email,
-        password,
-        fullName,
-        postalcode,
-        streetNumber,
-        houseNumber,
-        instructions,
+        email: signupData.email,
+        password: signupData.password,
+        fullName: signupData.fullName,
+        postalcode: signupData.postalCode,
+        streetNumber: signupData.streetName,
+        houseNumber: signupData.houseNumber,
+        instructions: signupData.instructions,
       }),
     });
 
