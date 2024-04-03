@@ -7,10 +7,11 @@ const LoginPage = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { token } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
+    // Add your login logic here
 
     setIsLoading(true);
     setError(null);
@@ -29,51 +30,49 @@ const LoginPage = () => {
     }
 
     if (response.ok) {
-      localStorage.setItem("token", JSON.stringify(data));
+      localStorage.setItem("token", JSON.stringify(data)); /* or data.token? */
       setIsLoading(false);
       login(data.token);
     }
   };
 
-  console.log("Login data:", loginData);
-
   return (
     <div className={styles.logincontainer}>
       <form onSubmit={handleLoginSubmit} className={styles.loginForm}>
-        <div className={styles.formGroup}>
-          <label htmlFor="username" className={styles.label}>
-            Email
-          </label>
-          <input
-            className={styles.input}
-            id="username"
-            type="email"
-            placeholder="Email"
-            required={true}
-            value={loginData.email}
-            onChange={(e) =>
-              setLoginData({ ...loginData, email: e.target.value })
-            }
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label htmlFor="password" className={styles.label}>
-            Password
-          </label>
-          <input
-            className={styles.input}
-            id="password"
-            type="password"
-            placeholder="**********"
-            value={loginData.password}
-            onChange={(e) =>
-              setLoginData({ ...loginData, password: e.target.value })
-            }
-          />
-        </div>
-        <button className={styles.button} type="submit">
+        <label htmlFor="email" className={styles.inputLabel}>
+          Email
+        </label>
+        <input
+          className={styles.inputField}
+          id="email"
+          type="email"
+          placeholder="Email"
+          required={true}
+          value={loginData.email}
+          onChange={(e) =>
+            setLoginData({ ...loginData, email: e.target.value })
+          }
+        />
+
+        <label htmlFor="password" className={styles.inputLabel}>
+          Password
+        </label>
+        <input
+          className={styles.inputField}
+          id="password"
+          type="password"
+          placeholder="**********"
+          required={true}
+          value={loginData.password}
+          onChange={(e) =>
+            setLoginData({ ...loginData, password: e.target.value })
+          }
+        />
+
+        <button className={styles.submitButton} type="submit">
           Login
         </button>
+
         {error && <div className={styles.error}>{error}</div>}
       </form>
     </div>
