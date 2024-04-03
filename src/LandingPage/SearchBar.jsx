@@ -1,6 +1,8 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import backgroundImage from "../assets/background2.jpg";
+import myImage from "../assets/expl10 .png";
 
 const SearchBar = ({ onSearch, onSearchWithCriteria }) => {
   const [query, setQuery] = React.useState("");
@@ -20,24 +22,33 @@ const SearchBar = ({ onSearch, onSearchWithCriteria }) => {
     }
   };
 
-
   return (
     <div
       className="relative flex items-center"
       style={{
-        backgroundImage: `url('/background-image.jpg')`,
+        backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "100vh",
       }}
     >
-      {/* <p className="text-2xl text-red-500 mt-20 mb-4  text-decoration-color: #fff;">
-        Book a car park space by the hour, day or month
-      </p> */}
+      {/* Add to image with top-center positioning */}
+      <img
+        src={myImage}
+        alt="My Image"
+        className="absolute left-1/2 transform -translate-x-1/2"
+        style={{
+          width: "800px",
+          height: "auto",
+          zIndex: 5,
+          top: "2rem",
+        }}
+      />
+
       <form
         onSubmit={handleSubmit}
-        className="w-3/4 mx-auto border border-blue-400 rounded-2xl p-4 bg-white bg-opacity-90 "
-        style={{ zIndex: 10 }}
+        className="w-3/4 mx-auto border border-blue-400 rounded-2xl p-4 bg-white bg-opacity-90"
+        style={{ zIndex: 10 }} // Set a higher z-index for the search form
       >
         <div className="flex items-center gap-2 justify-between">
           <input
