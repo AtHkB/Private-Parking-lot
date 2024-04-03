@@ -1,0 +1,16 @@
+.mapPageContainer {
+  margin: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  min-height: 100vh;
+}
+
+.suggestionCardsContainer {
+  width: 25%;
+  min-height: 100vh;
+}
+
+.map {
+  width: 75%;
+  min-height: 100vh;
+}

@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import parkings from "../api/parkings.json";
 import { Link } from "react-router-dom";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import styles from "./MapPage.module.css";
 
 export default function MapPage() {
   const [map, setMap] = useState(null);
@@ -47,33 +48,23 @@ export default function MapPage() {
   }, [id]);
 
   return (
-    <div className="mapPageContainer m-2 flex gap-2 min-h-screen">
+    <div className={styles.mapPageContainer}>
       {selectedParking ? (
-        <div className="suggestionCardsContainer w-1/4 ">
-          <div
-            className="border rounded shadow min-h-24 pb-2 mb-2 "
-            key={selectedParking.id}
-          >
-            <h3 className="font-medium px-2 text-center  bg-red-600">
-              Street name(from form)
-            </h3>
-            <h3 className="px-2 text-center mt-5">
+        <div className={styles.suggestionCardsContainer}>
+          <div className={styles.parkingCard} key={selectedParking.id}>
+            <h3 className={styles.streetName}>Street name(from form)</h3>
+            <h3 className={styles.hourlyPrice}>
               Hourly Price: ${selectedParking.location.hourlyPrice}
             </h3>
           </div>
         </div>
       ) : (
-        <div className="suggestionCardsContainer w-1/4 min-h-screen">
+        <div className={styles.suggestionCardsContainer}>
           {parkings.map((parking) => (
             <Link to={`details/${parking.id}`} key={parking.id}>
-              <div
-                className="border rounded shadow min-h-24 pb-2 mb-2 "
-                key={parking.id}
-              >
-                <h3 className="font-medium px-2 text-center  bg-red-600">
-                  Street name(from form)
-                </h3>
-                <h3 className="px-2 text-center mt-5">
+              <div className={styles.parkingCard} key={parking.id}>
+                <h3 className={styles.streetName}>Street name(from form)</h3>
+                <h3 className={styles.hourlyPrice}>
                   Hourly Price: ${parking.location.hourlyPrice}
                 </h3>
               </div>
@@ -81,7 +72,7 @@ export default function MapPage() {
           ))}
         </div>
       )}
-      <div className="map w-3/4 mb-2 min-h-screen">
+      <div className={styles.map}>
         {isLoaded ? (
           <GoogleMap
             mapContainerStyle={containerStyle}
