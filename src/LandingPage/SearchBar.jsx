@@ -28,6 +28,7 @@ const SearchBar = ({ onSearch, onSearchWithCriteria }) => {
       className={styles.searchbar}
       style={{
         backgroundImage: `url(${backgroundImage})`,
+        minHeight: "100vh",
       }}
     >
       <img src={myImage} alt="My Image" className={styles.image} />
@@ -66,11 +67,11 @@ const SearchBar = ({ onSearch, onSearchWithCriteria }) => {
             className={styles.datePicker}
             placeholderText="Date - Time"
           />
-        </div>
 
-        <button type="submit" className={styles.searchButton}>
-          Search
-        </button>
+          <button type="submit" className={styles.searchButton}>
+            Search
+          </button>
+        </div>
       </form>
     </div>
   );
