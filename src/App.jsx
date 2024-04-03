@@ -6,22 +6,25 @@ import LoginPage from "./LandingPage/LoginPage";
 import SignupPage from "./LandingPage/SignupPage";
 import AuthRouter from "./LandingPage/AuthRouter";
 import MapPage from "./components/MapPage";
+import AuthContextProvider from "./context/authContext";
 
 const App = () => {
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<SearchBar />}>
-          {/* Render ExplanationContainer directly within the main route */}
-          <Route index element={<ExplanationContainer />} />
-        </Route>
-        <Route path="map" element={<MapPage />} />
-        <Route path="/map/details/:id" element={<MapPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/auth" element={<AuthRouter />} />
-      </Routes>
+      <AuthContextProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<SearchBar />}>
+            <Route index element={<ExplanationContainer />} />
+          </Route>
+          <Route path="map" element={<MapPage />} />
+          <Route path="/map/details/:id" element={<MapPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/auth" element={<AuthRouter />} />
+        </Routes>
+      </AuthContextProvider>
+
     </Router>
   );
 };

@@ -1,18 +1,34 @@
 import { useNavigate } from "react-router-dom";
+
 import parkLogo from "../assets/PProyal1 (1).png";
+import "./Navbar.css";
+import { useContext } from "react";
+import { AuthContext } from "../context/authContext";
+import { Link } from "react-router-dom";
+import { useJwt } from "react-jwt";
+
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { logout, token } = useContext(AuthContext);
 
   const handleLoginClick = () => {
     navigate("/login");
   };
+
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    logout();
+  };
+
+  const { decodedToken } = useJwt(token);
 
   const handleSignupClick = () => {
     navigate("/signup");
   };
 
   return (
+
     <nav className="flex items-center justify-between align-bottom px-4 py-2 bg-white-900">
       <div className="flex items-center">
         <div>
@@ -37,6 +53,7 @@ const Navbar = () => {
         >
           Sign Up
         </button>
+
       </div>
     </nav>
   );
