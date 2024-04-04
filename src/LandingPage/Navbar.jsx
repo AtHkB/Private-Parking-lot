@@ -1,25 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import { useJwt } from "react-jwt";
 import parkLogo from "../assets/PProyal1 (1).png";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { logout, token } = useContext(AuthContext);
-
+  const { logout, user } = useContext(AuthContext);
   const handleLoginClick = () => {
     navigate("/login");
   };
 
   const handleLogOut = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     logout();
   };
 
-  const { decodedToken } = useJwt(token);
+  const { decodedToken } = useJwt(user?.token);
 
   const handleSignupClick = () => {
     navigate("/signup");
@@ -32,12 +31,21 @@ const Navbar = () => {
       </div>
 
       <div className={styles.linksContainer}>
-        <button className={styles.navButton} onClick={handleLoginClick}>
-          Login
-        </button>
-        <button className={styles.navButton} onClick={handleSignupClick}>
-          Sign Up
-        </button>
+        {user && (
+          <button className={styles.navButton} onClick={handleLogOut}>
+            Logout
+          </button>
+        )}
+        {!user && (
+          <>
+            <button className={styles.navButton} onClick={handleLoginClick}>
+              Login
+            </button>
+            <button className={styles.navButton} onClick={handleSignupClick}>
+              Sign Up
+            </button>
+          </>
+        )}
       </div>
     </nav>
   );
