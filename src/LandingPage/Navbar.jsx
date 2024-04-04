@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import { Link } from "react-router-dom";
 import { useJwt } from "react-jwt";
-import parkLogo from "../assets/PProyal1 (1).png";
+import parkLogo from "../assets/Private-parking-4-4-2024 (1).png";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
@@ -28,7 +28,9 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logoContainer}>
-        <img src={parkLogo} alt="Park Logo" className={styles.logo} />
+        <Link to="/">
+          <img src={parkLogo} alt="Park Logo" className={styles.logo} />
+        </Link>
       </div>
 
       <div className={styles.linksContainer}>
