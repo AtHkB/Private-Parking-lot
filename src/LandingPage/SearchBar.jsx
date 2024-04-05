@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import backgroundImage from "../assets/background2.jpg";
 import myImage from "../assets/expl10 .png";
 import styles from "./SearchBar.module.css";
+import Navbar from "./Navbar";
 
 const SearchBar = ({ onSearch, onSearchWithCriteria }) => {
   const [query, setQuery] = React.useState("");

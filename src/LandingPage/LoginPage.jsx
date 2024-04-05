@@ -24,10 +24,7 @@ const LoginPage = () => {
     setIsLoading(true);
     setError(null);
     const { email, password } = loginData;
-
-
-    const response = await fetch("http://localhost:8081/users/login", {
-
+    const response = await fetch(login_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
