@@ -51,7 +51,7 @@ export default function MapPage() {
     <div className={styles.mapPageContainer}>
       {selectedParking ? (
         <div className={styles.suggestionCardsContainer}>
-          <div className={styles.parkingCard} key={selectedParking.id}>
+          <div className={styles.suggestionCard} key={selectedParking.id}>
             <h3 className={styles.streetName}>Street name(from form)</h3>
             <h3 className={styles.hourlyPrice}>
               Hourly Price: ${selectedParking.location.hourlyPrice}
@@ -61,8 +61,12 @@ export default function MapPage() {
       ) : (
         <div className={styles.suggestionCardsContainer}>
           {parkings.map((parking) => (
-            <Link to={`details/${parking.id}`} key={parking.id}>
-              <div className={styles.parkingCard} key={parking.id}>
+            <Link
+              className="link"
+              to={`details/${parking.id}`}
+              key={parking.id}
+            >
+              <div className={styles.suggestionCard} key={parking.id}>
                 <h3 className={styles.streetName}>Street name(from form)</h3>
                 <h3 className={styles.hourlyPrice}>
                   Hourly Price: ${parking.location.hourlyPrice}
