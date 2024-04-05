@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useJwt } from "react-jwt";
 import parkLogo from "../assets/Private-parking-4-4-2024 (1).png";
 import styles from "./Navbar.module.css";
