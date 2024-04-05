@@ -5,15 +5,25 @@
 }
 
 .loginForm {
+  color: #253d5f;
+  font-size: 1.5rem;
+  font-weight: 800;
   width: 400px;
   padding: 2rem;
-  background-color: #fff;
+  background-color: #ffffff97;
   border-radius: 0.5rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.422);
+  margin-bottom: 7rem;
+}
+
+.inputLabel span {
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem; /* Add spacing between the text and the checkbox */
 }
 
 .inputLabel {
-  display: block;
+  display: flex;
+  align-items: center; /* Align items vertically */
   margin-bottom: 0.5rem;
   font-weight: bold;
 }
@@ -28,19 +38,51 @@
   outline: none;
 }
 
+.loginType_container {
+  display: flex;
+  align-items: center;
+}
+
+.inputLabel {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.inputLabel span {
+  margin-right: 1.5rem; /* Add spacing between the text and the checkbox */
+}
+
+.inputField {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+.loginType_container input[type="checkbox"] {
+  margin-left: auto;
+}
 .submitButton {
   width: 100%;
   padding: 0.75rem;
-  background-color: #4a90e2;
+  background-color: #253d5f;
   color: #fff;
   font-weight: bold;
+  font-size: 1.2rem;
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
+  transition: color 0.4s;
 }
 
 .submitButton:hover {
-  background-color: #3578c7;
+  /*background-color: #3578c7;*/
+  color: #ab1d1d;
 }
 
 .error {

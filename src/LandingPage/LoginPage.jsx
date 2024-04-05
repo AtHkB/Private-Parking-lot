@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import styles from "./LoginPage.module.css";
 import { useNavigate } from "react-router-dom";
+import backgroundImage from "../assets/backgroundLogin.jpg";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -44,17 +45,28 @@ const LoginPage = () => {
   };
 
   return (
-    <div className={styles.logincontainer}>
+    <div
+      className={styles.logincontainer}
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        minHeight: "100vh",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <form onSubmit={handleLoginSubmit} className={styles.loginForm}>
-        <label htmlFor="loginType" className={styles.inputLabel}>
-          Login as Parking Owner:
-        </label>
-        <input
-          id="loginType"
-          type="checkbox"
-          value={userNormal}
-          onChange={handleClick}
-        />
+        <div className="loginType_container">
+          <label htmlFor="loginType" className={styles.inputLabel}>
+            <span>Login as Parking Owner:</span>
+            <input
+              id="loginType"
+              type="checkbox"
+              value={userNormal}
+              onChange={handleClick}
+            />
+          </label>
+        </div>
+
         <label htmlFor="email" className={styles.inputLabel}>
           Email
         </label>

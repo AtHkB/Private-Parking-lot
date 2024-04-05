@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import styles from "./SignupPage.module.css";
+import backgroundImage from "../assets/parkingLot.jpeg";
 
 const SignupPage = () => {
   const [signupData, setSignupData] = useState({
@@ -61,7 +62,15 @@ const SignupPage = () => {
   };
 
   return (
-    <div className={styles.signupcontainer}>
+    <div
+      className={styles.signupcontainer}
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        minHeight: "100vh",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <form onSubmit={handleSignupSubmit} className={styles.signupForm}>
         <label htmlFor="email" className={styles.inputLabel}>
           Email
