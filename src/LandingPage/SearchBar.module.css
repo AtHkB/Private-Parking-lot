@@ -10,30 +10,34 @@ body {
 .searchbar {
   position: relative;
   display: flex;
+  flex-direction: column-reverse;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-size: cover;
-  background-position: center top; /* Adjust background position to overflow at the top */
+  background-position: center top;
   min-height: 100vh;
 }
 
 .image {
+  border: #c0bdbd 1px solid;
+  box-shadow: 0 0 10px #c0bdbd, 0 0 0 transparent; /* Remove only the bottom shadow */
+  border-bottom: transparent;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 800px;
+  width: 815px;
   height: max-content;
-  z-index: 5;
-  top: 3rem; /* Move the picture to the top by about 10rem */
+  z-index: 1;
+  top: 3rem;
 }
 
 .searchForm {
-  width: 75%;
-  margin: 0 auto;
-  padding: 1rem;
+  width: 80%;
+  padding: 0.3rem;
   background-color: #a6a09fa8;
-  border-radius: 2rem;
-  z-index: 10;
+  border-radius: 0.25rem;
+  box-sizing: content-box;
+  z-index: 1;
 }
 
 .searchInputs {
@@ -53,6 +57,16 @@ body {
 
 .label {
   margin: 0 0.5rem;
+  color: #253d5f;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.dateSeparator {
+  margin: 0 0.5rem;
+  color: #253d5f;
+  font-weight: 700;
+  font-size: 1.2rem;
 }
 
 .datePicker {
@@ -81,4 +95,35 @@ body {
 .searchButton:hover {
   /* background-color: #3578c7; */
   color: #ab1d1d;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/*.landingWrapper {
+  gap: 2rem;
+} */
+
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 26rem;
+}
+
+.searchForm {
+  margin-bottom: 2px;
+}
+
+.threeStepsimage {
+  display: inline-block;
+  margin-top: 0px;
+  width: auto; /* Allow the container width to adjust based on its content */
+  max-width: 100%; /* Set a maximum width to ensure it doesn't exceed its parent */
+  height: fit-content; /* Resize the container to fit its content vertically */
+  opacity: 0.78;
 }

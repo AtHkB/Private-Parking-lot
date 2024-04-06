@@ -16,6 +16,13 @@ body {
 .logo {
   width: 450px;
   height: auto;
+  transition: filter 0.4s, color 0.4s;
+  color: currentColor;
+}
+
+.navbar .logo:hover {
+  filter: hue-rotate(180deg);
+  color: #ab1d1d;
 }
 
 .linksContainer {
