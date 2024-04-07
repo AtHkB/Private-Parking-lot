@@ -1,3 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0400..700;1,400..700&display=swap");
+
+.searchInput,
+.label,
+.dateSeparator,
+.datePicker,
+.searchButton {
+  font-family: "Cabin", sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;
