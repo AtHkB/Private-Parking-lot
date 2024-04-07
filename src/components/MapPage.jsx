@@ -103,7 +103,7 @@ export default function MapPage() {
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={currentPosition}
-            zoom={15}
+            zoom={10}
             onLoad={onLoad}
             onUnmount={onUnmount}
           >

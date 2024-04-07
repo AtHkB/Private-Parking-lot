@@ -10,6 +10,49 @@
   background-color: #ffffff97;
   border-radius: 0.5rem;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.422);
+  z-index: 1;
+}
+
+.textarea {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #253d5f;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: color 0.4s;
+  margin: 1rem 1rem 1rem 0;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/* Custom file button */
+.customFileButton {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #253d5f;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: color 0.4s;
+  margin: 0 1rem 0 0;
 }
 
 .inputLabel {
@@ -19,7 +62,7 @@
 }
 
 .inputField {
-  width: 100%;
+  width: 97%;
   padding: 0.5rem;
   margin-bottom: 1rem;
   border: 1px solid #ccc;
@@ -39,10 +82,13 @@
   border-radius: 0.25rem;
   cursor: pointer;
   transition: color 0.4s;
+  margin-top: 1rem;
 }
 
-.submitButton:hover {
-  background-color: #253d5f;
+.submitButton:hover,
+.button:hover,
+.customFileButton:hover {
+  /* background-color: #253d5f; */
   color: #ab1d1d;
 }
 

@@ -1,7 +1,9 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect, useCallback } from "react";
 import { AuthContext } from "../context/authContext";
+import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import styles from "./SignupPage.module.css";
 import backgroundImage from "../assets/parkingLot.jpeg";
+import { useParams } from "react-router";
 
 const SignupPage = () => {
   const [signupData, setSignupData] = useState({
@@ -19,6 +21,61 @@ const SignupPage = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useContext(AuthContext);
+  /* BEGINNING OF MAP INSERTION */
+  const [showModal, setShowModal] = useState(false); // Modal component's state
+  const [map, setMap] = useState(null);
+  const [currentPosition, setCurrentPosition] = useState(null);
+  const [selectedPosition, setSelectedPosition] = useState(null);
+  const { id } = useParams();
+  const [selectedParking, setSelectedParking] = useState(null);
+
+  const containerStyle = {
+    width: "400PX",
+    height: "400PX",
+  };
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setCurrentPosition({ lat: latitude, lng: longitude });
+          setSelectedPosition({ lat: latitude, lng: longitude });
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  }, []);
+
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+  });
+
+  const onLoad = useCallback(
+    function callback(map) {
+      const bounds = new window.google.maps.LatLngBounds(currentPosition);
+      map.fitBounds(bounds);
+      setMap(map);
+
+      map.addListener("click", (event) => {
+        setSelectedPosition({
+          lat: event.latLng.lat(),
+          lng: event.latLng.lng(),
+        });
+      });
+    },
+    [currentPosition]
+  );
+
+  const onUnmount = useCallback(function callback(map) {
+    setMap(null);
+  }, []);
+  /* END OF MAP INSERTION */
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
@@ -54,11 +111,22 @@ const SignupPage = () => {
     }
 
     if (response.ok) {
-      localStorage.setItem("token", data.token); /* or data.token? */
+      localStorage.setItem("token", data.token);
       setIsLoading(false);
       login(data.token);
     }
     console.log("Signup data:", signupData);
+  };
+
+  // Function to handle selecting location on map
+  const handleSelectLocation = () => {
+    setShowModal(true);
+  };
+
+  // Function to handle saving location and closing modal
+  const handleSaveLocation = (location) => {
+    setSignupData({ ...signupData, location });
+    setShowModal(false);
   };
 
   return (
@@ -132,21 +200,6 @@ const SignupPage = () => {
           }
         />
 
-        <label htmlFor="location" className={styles.inputLabel}>
-          Location
-        </label>
-        <input
-          className={styles.inputField}
-          id="location"
-          type="text"
-          placeholder="Location"
-          required={true}
-          value={signupData.location}
-          onChange={(e) =>
-            setSignupData({ ...signupData, location: e.target.value })
-          }
-        />
-
         <label htmlFor="postalCode" className={styles.inputLabel}>
           Postal Code
         </label>
@@ -196,9 +249,9 @@ const SignupPage = () => {
           Instructions to Access the Parking
         </label>
         <textarea
-          className={styles.textareaField}
+          className={styles.textarea}
           id="instructions"
-          placeholder="Instructions to Access the Parking"
+          placeholder="Instructions"
           required={true}
           value={signupData.instructions}
           onChange={(e) =>
@@ -209,6 +262,7 @@ const SignupPage = () => {
         <label htmlFor="idCard" className={styles.inputLabel}>
           Upload ID Card
         </label>
+
         <input
           type="file"
           id="idCard"
@@ -217,17 +271,67 @@ const SignupPage = () => {
           onChange={(e) =>
             setSignupData({ ...signupData, idCard: e.target.files[0] })
           }
-          className={styles.fileInput}
+          className={styles.fileInput} // Keep this class for custom styling
         />
+        <label htmlFor="idCard" className={styles.customFileButton}>
+          Choose File
+        </label>
+
+        {/* SELECT LOCATION */}
+        <div className={styles.mapContainer}>
+          <button className={styles.button} onClick={handleSelectLocation}>
+            Select Location on Map
+          </button>
+          {/* Display selected location here */}
+          {signupData.location && (
+            <div className={styles.selectedLocation}>
+              Selected Location: {signupData.location}
+            </div>
+          )}
+        </div>
+
         {signupData.idCard && (
           <span className={styles.selectedFile}>{signupData.idCard.name}</span>
+        )}
+
+        {error && <div className={styles.error}>{error}</div>}
+        {/* Modal for selecting location on map */}
+        {showModal && (
+          <div className={styles.modalOverlay}>
+            <div className={styles.modalContent}>
+              <h2>Select Location on Map</h2>
+              {isLoaded ? (
+                <GoogleMap
+                  mapContainerStyle={containerStyle}
+                  center={currentPosition}
+                  zoom={10}
+                  onLoad={onLoad}
+                  onUnmount={onUnmount}
+                >
+                  {selectedPosition && <Marker position={selectedPosition} />}
+                </GoogleMap>
+              ) : (
+                <div>Loading...</div>
+              )}
+              <button
+                className={styles.button}
+                onClick={() => handleSaveLocation("Selected Location")}
+              >
+                Save Location
+              </button>
+              <button
+                className={styles.button}
+                onClick={() => setShowModal(false)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
         )}
 
         <button className={styles.submitButton} type="submit">
           Sign Up
         </button>
-
-        {error && <div className={styles.error}>{error}</div>}
       </form>
     </div>
   );
