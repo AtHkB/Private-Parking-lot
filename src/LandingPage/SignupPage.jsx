@@ -206,7 +206,7 @@ const SignupPage = () => {
           }
         ></textarea>
 
-        <label htmlFor="idCard" className={styles.inputLabel}>
+        <label htmlFor="idCard" className={styles.inputLabelID}>
           Upload ID Card
         </label>
         <input

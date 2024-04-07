@@ -84,7 +84,7 @@ export default function MapPage() {
         <div className={styles.suggestionCardsContainer}>
           {parkings.map((parking) => (
             <Link
-              className="link"
+              className={styles.link}
               to={`details/${parking.id}`}
               key={parking.id}
             >
