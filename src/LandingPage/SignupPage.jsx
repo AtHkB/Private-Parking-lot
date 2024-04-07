@@ -323,7 +323,7 @@ const SignupPage = () => {
                 className={styles.button}
                 onClick={() => setShowModal(false)}
               >
-                Close
+                Cancel
               </button>
             </div>
           </div>
