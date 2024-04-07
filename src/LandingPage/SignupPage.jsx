@@ -273,9 +273,9 @@ const SignupPage = () => {
           }
           className={styles.fileInput} // Keep this class for custom styling
         />
-        <label htmlFor="idCard" className={styles.customFileButton}>
+        {/* <label htmlFor="idCard" className={styles.customFileButton}>
           Choose File
-        </label>
+        </label> */}
 
         {/* SELECT LOCATION */}
         <div className={styles.mapContainer}>
