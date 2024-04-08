@@ -118,14 +118,15 @@ const SignupPage = () => {
     console.log("Signup data:", signupData);
   };
 
-  // Function to handle selecting location on map
+  // Handle selecting location on map
   const handleSelectLocation = () => {
     setShowModal(true);
   };
 
-  // Function to handle saving location and closing modal
-  const handleSaveLocation = (location) => {
-    setSignupData({ ...signupData, location });
+  // Handle saving location and closing modal
+  const handleSaveLocation = (latitude, longitude) => {
+    const locationString = `${latitude},${longitude}`;
+    setSignupData({ ...signupData, location: locationString });
     setShowModal(false);
   };
 
@@ -315,7 +316,9 @@ const SignupPage = () => {
               )}
               <button
                 className={styles.button}
-                onClick={() => handleSaveLocation("Selected Location")}
+                onClick={() =>
+                  handleSaveLocation(selectedPosition.lat, selectedPosition.lng)
+                }
               >
                 Save Location
               </button>
@@ -329,7 +332,11 @@ const SignupPage = () => {
           </div>
         )}
 
-        <button className={styles.submitButton} type="submit">
+        <button
+          className={styles.submitButton}
+          type="submit"
+          onClick={handleSignupSubmit}
+        >
           Sign Up
         </button>
       </form>
