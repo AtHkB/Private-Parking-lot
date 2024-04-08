@@ -60,7 +60,7 @@
 }
 
 .inputLabel span {
-  margin-right: 1.5rem; /* Add spacing between the text and the checkbox */
+  margin-right: 3rem; /* Add spacing between the text and the checkbox */
 }
 
 .inputField {
@@ -94,4 +94,145 @@
 .error {
   color: red;
   margin-top: 0.5rem;
+}
+
+/*   Y E S  /  N O   BUTTON */
+
+.checkboxWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  justify-items: center;
+}
+
+.rocker {
+  margin-top: 1em;
+  display: inline-block;
+  position: relative;
+  font-size: 0.5em;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  color: #888;
+  width: 7em;
+  height: 4em;
+  overflow: hidden;
+  border-bottom: 0.5em solid #eee;
+}
+
+.rockerSmall {
+  font-size: 0.75em;
+}
+
+.rocker::before {
+  content: "";
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #999;
+  border: 0.5em solid #eee;
+  border-bottom: 0;
+}
+
+.switchLeft,
+.switchRight {
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5em;
+  width: 3em;
+  transition: 0.2s;
+  user-select: none;
+}
+
+.switchLeft {
+  height: 2.4em;
+  width: 2.75em;
+  left: 0.85em;
+  bottom: 0.4em;
+  background-color: #ddd;
+  transform: rotate(15deg) skewX(15deg);
+}
+
+.switchRight {
+  right: 0.5em;
+  bottom: 0;
+  background-color: #bd5757;
+  color: #fff;
+}
+
+.switchLeft::before,
+.switchRight::before {
+  content: "";
+  position: absolute;
+  width: 0.4em;
+  height: 2.45em;
+  bottom: -0.45em;
+  background-color: #ccc;
+  transform: skewY(-65deg);
+}
+
+.switchLeft::before {
+  left: -0.4em;
+}
+
+.switchRight::before {
+  right: -0.375em;
+  background-color: transparent;
+  transform: skewY(65deg);
+}
+
+/* Adjusted checkbox selector */
+input[type="checkbox"]:checked + .rocker .switchLeft {
+  background-color: #0084d0;
+  color: #fff;
+  bottom: 0px;
+  left: 0.5em;
+  height: 2.5em;
+  width: 3em;
+  transform: rotate(0deg) skewX(0deg);
+}
+
+input[type="checkbox"]:checked + .rocker .switchLeft::before {
+  background-color: transparent;
+  width: 3.0833em;
+}
+
+input[type="checkbox"]:checked + .rocker .switchLeft + .switchRight {
+  background-color: #ddd;
+  color: #888;
+  bottom: 0.4em;
+  right: 0.8em;
+  height: 2.4em;
+  width: 2.75em;
+  transform: rotate(-15deg) skewX(-15deg);
+}
+
+input[type="checkbox"]:checked + .rocker .switchLeft + .switchRight::before {
+  background-color: #ccc;
+}
+
+/* Keyboard Users */
+input[type="checkbox"]:focus + .rocker .switchLeft {
+  color: #333;
+}
+
+input[type="checkbox"]:checked:focus + .rocker .switchLeft {
+  color: #fff;
+}
+
+input[type="checkbox"]:focus + .rocker .switchLeft + .switchRight {
+  color: #fff;
+}
+
+input[type="checkbox"]:checked:focus + .rocker .switchLeft + .switchRight {
+  color: #333;
+}
+
+.checkboxWrapper input[type="checkbox"] {
+  display: none;
 }

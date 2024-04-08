@@ -2,7 +2,7 @@ import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import backgroundImage from "../assets/background2.jpg";
-import myImage from "../assets/expl10 .png";
+import myImage from "../assets/landing.png";
 import threeSteps from "../assets/3.png";
 import styles from "./SearchBar.module.css";
 import Navbar from "./Navbar";
