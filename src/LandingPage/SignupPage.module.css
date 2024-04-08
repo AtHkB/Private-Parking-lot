@@ -4,7 +4,8 @@
 .inputLabel,
 .inputField,
 .submitButton,
-.inputLabelID {
+.inputLabelID,
+.textarea {
   font-family: "Cabin", sans-serif;
 }
 
@@ -25,9 +26,11 @@
 }
 
 .textarea {
-  width: 100%;
+  display: block;
+  width: 392px;
   height: 60px;
   margin-bottom: 1rem;
+  text-indent: 0.45rem;
 }
 
 h2 {
