@@ -141,6 +141,19 @@ const SignupPage = () => {
       }}
     >
       <form onSubmit={handleSignupSubmit} className={styles.signupForm}>
+        <div className={styles.checkboxWrapper}>
+          <h4>Are you a parking owner?</h4>
+          <input
+            id="checkboxInput"
+            type="checkbox"
+            className={styles.checkboxInput}
+          />
+          <label htmlFor="checkboxInput" className={styles.rocker}>
+            <span className={styles.switchLeft}>Yes</span>
+            <span className={styles.switchRight}>No</span>
+          </label>
+        </div>
+
         <label htmlFor="email" className={styles.inputLabel}>
           Email
         </label>
