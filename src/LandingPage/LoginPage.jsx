@@ -55,15 +55,16 @@ const LoginPage = () => {
       }}
     >
       <form onSubmit={handleLoginSubmit} className={styles.loginForm}>
-        <div className="loginType_container">
-          <label htmlFor="loginType" className={styles.inputLabel}>
-            <span>Login as Parking Owner:</span>
-            <input
-              id="loginType"
-              type="checkbox"
-              value={userNormal}
-              onChange={handleClick}
-            />
+        <div className={styles.checkboxWrapper}>
+          <h4>Are you a parking owner?</h4>
+          <input
+            id="checkboxInput"
+            type="checkbox"
+            className={styles.checkboxInput}
+          />
+          <label htmlFor="checkboxInput" className={styles.rocker}>
+            <span className={styles.switchLeft}>Yes</span>
+            <span className={styles.switchRight}>No</span>
           </label>
         </div>
 
