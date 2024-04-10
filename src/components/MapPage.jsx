@@ -69,7 +69,7 @@ export default function MapPage() {
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAP_API_KEY,
   });
 
   const onLoad = useCallback(
@@ -99,8 +99,16 @@ export default function MapPage() {
 
   return (
     <div className={styles.mapPageContainer}>
-      {isLoading ? ( // Display spinner while geolocation is loading
-        <Spinner />
+      {isLoading ? (
+        <div className={styles.spinnerContainer}>
+          <SpinnerCircularSplit
+            size={90}
+            thickness={145}
+            speed={100}
+            color="rgba(57, 105, 172, 1)"
+            secondaryColor="rgba(0, 0, 0, 0.48)"
+          />
+        </div>
       ) : selectedParking ? (
         <div className={styles.suggestionCardsContainer}>
           <div className={styles.suggestionCard} key={selectedParking.id}>
