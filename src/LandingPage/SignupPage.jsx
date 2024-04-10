@@ -88,34 +88,40 @@ const SignupPage = () => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch("http://localhost:8081/users/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: signupData.email,
-        password: signupData.password,
-        fullName: signupData.fullName,
-        location: signupData.location,
-        postalCode: signupData.postalCode,
-        streetName: signupData.streetName,
-        houseNumber: signupData.houseNumber,
-        instructions: signupData.instructions,
-      }),
-    });
+    try {
+      const response = await fetch("http://localhost:8081/users/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: signupData.email,
+          password: signupData.password,
+          fullName: signupData.fullName,
+          location: signupData.location,
+          postalCode: signupData.postalCode,
+          streetName: signupData.streetName,
+          houseNumber: signupData.houseNumber,
+          instructions: signupData.instructions,
+        }),
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (!response.ok) {
+      if (!response.ok) {
+        setIsLoading(false);
+        setError(data.error);
+      }
+
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        setIsLoading(false);
+        login(data.token);
+      }
+      console.log("Signup data:", signupData);
+    } catch (error) {
+      console.error("Fetch error:", error);
       setIsLoading(false);
-      setError(data.error);
+      setError("An error occurred while processing your request.");
     }
-
-    if (response.ok) {
-      localStorage.setItem("token", data.token);
-      setIsLoading(false);
-      login(data.token);
-    }
-    console.log("Signup data:", signupData);
   };
 
   // Handle selecting location on map

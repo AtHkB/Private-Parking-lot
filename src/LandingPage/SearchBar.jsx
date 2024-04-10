@@ -5,24 +5,28 @@ import backgroundImage from "../assets/background2.jpg";
 import myImage from "../assets/landing.png";
 import threeSteps from "../assets/3.png";
 import styles from "./SearchBar.module.css";
-import Navbar from "./Navbar";
+import Spinner from "../components/Spinner";
 
 const SearchBar = ({ onSearch, onSearchWithCriteria }) => {
   const [query, setQuery] = React.useState("");
   const [startDate, setStartDate] = React.useState(null);
   const [endDate, setEndDate] = React.useState(null);
+  const [loading, setLoading] = React.useState(false); // Add loading state
 
   const handleChange = (event) => {
     setQuery(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    // Make handleSubmit async
     event.preventDefault();
+    setLoading(true); // Set loading state to true when search starts
     if (startDate && endDate) {
-      onSearchWithCriteria(query, startDate, endDate);
+      await onSearchWithCriteria(query, startDate, endDate); // Await the search with criteria
     } else {
-      onSearch(query);
+      await onSearch(query); // Await the normal search
     }
+    setLoading(false); // Set loading state to false when search completes
   };
 
   return (
@@ -76,6 +80,7 @@ const SearchBar = ({ onSearch, onSearchWithCriteria }) => {
                 </button>
               </div>
             </form>
+            {loading && <Spinner />} {/* Display spinner if loading */}
             <div className={styles.item}>
               <img
                 src={threeSteps}

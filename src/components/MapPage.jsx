@@ -5,11 +5,13 @@ import { useParams } from "react-router";
 import parkings from "../api/parkings.json";
 import { Link } from "react-router-dom";
 import styles from "./MapPage.module.css";
+import Spinner from "./Spinner";
 
 export default function MapPage() {
   const [map, setMap] = useState(null);
   const [currentPosition, setCurrentPosition] = useState(null);
   const [selectedPosition, setSelectedPosition] = useState(null);
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
   const { id } = useParams();
   const [selectedParking, setSelectedParking] = useState(null);
 
@@ -25,13 +27,16 @@ export default function MapPage() {
           const { latitude, longitude } = position.coords;
           setCurrentPosition({ lat: latitude, lng: longitude });
           setSelectedPosition({ lat: latitude, lng: longitude });
+          setIsLoading(false); // Turn off loading state after getting position
         },
         (error) => {
           console.error(error);
+          setIsLoading(false); // Turn off loading state on error
         }
       );
     } else {
       console.error("Geolocation is not supported by this browser.");
+      setIsLoading(false); // Turn off loading state if geolocation not supported
     }
   }, []);
 
@@ -71,7 +76,9 @@ export default function MapPage() {
 
   return (
     <div className={styles.mapPageContainer}>
-      {selectedParking ? (
+      {isLoading ? ( // Display spinner while geolocation is loading
+        <Spinner />
+      ) : selectedParking ? (
         <div className={styles.suggestionCardsContainer}>
           <div className={styles.suggestionCard} key={selectedParking.id}>
             <h3 className={styles.streetName}>Street name(from form)</h3>
@@ -110,7 +117,7 @@ export default function MapPage() {
             {selectedPosition && <Marker position={selectedPosition} />}
           </GoogleMap>
         ) : (
-          <div>Loading...</div>
+          <Spinner /> // Display spinner while Google Maps is loading
         )}
       </div>
     </div>
