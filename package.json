@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-google-maps/api": "^2.19.3",
+    "@vis.gl/react-google-maps": "^0.8.3",
     "axios": "^1.6.8",
     "dotenv": "^16.4.5",
     "google-maps-react-markers": "^2.0.8",

@@ -9,6 +9,9 @@ import styles from "./Navbar.module.css";
 const Navbar = () => {
   const navigate = useNavigate();
   const { logout, user } = useContext(AuthContext);
+  const bookingResponse = localStorage.getItem(
+    "booking-request-response-message"
+  );
   const handleLoginClick = () => {
     navigate("/login");
   };
@@ -33,6 +36,7 @@ const Navbar = () => {
       </div>
 
       <div className={styles.linksContainer}>
+        {bookingResponse && <p>{bookingResponse}</p>}
         {user && (
           <button className={styles.navButton} onClick={handleLogOut}>
             Logout
