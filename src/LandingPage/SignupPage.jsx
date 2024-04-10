@@ -4,7 +4,7 @@ import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import styles from "./SignupPage.module.css";
 import backgroundImage from "../assets/parkingLot.jpeg";
 import { useParams, useNavigate } from "react-router";
-import { SpinnerCircularSplit } from "spinners-react";
+import { SpinnerDotted } from "spinners-react";
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -178,12 +178,11 @@ const SignupPage = () => {
     >
       {isLoading ? (
         <div className={styles.spinnerContainer}>
-          <SpinnerCircularSplit
+          <SpinnerDotted
             size={90}
             thickness={145}
             speed={100}
             color="rgba(57, 105, 172, 1)"
-            secondaryColor="rgba(0, 0, 0, 0.48)"
           />
         </div>
       ) : (

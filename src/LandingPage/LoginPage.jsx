@@ -3,7 +3,7 @@ import { AuthContext } from "../context/authContext";
 import styles from "./LoginPage.module.css";
 import { useNavigate } from "react-router-dom";
 import backgroundImage from "../assets/backgroundLogin.jpg";
-import { SpinnerCircularSplit } from "spinners-react";
+import { SpinnerDotted } from "spinners-react";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -57,12 +57,11 @@ const LoginPage = () => {
     >
       {isLoading ? (
         <div className={styles.spinnerContainer}>
-          <SpinnerCircularSplit
+          <SpinnerDotted
             size={90}
             thickness={145}
             speed={100}
             color="rgba(57, 105, 172, 1)"
-            secondaryColor="rgba(0, 0, 0, 0.48)"
           />
         </div>
       ) : (

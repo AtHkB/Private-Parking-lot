@@ -6,7 +6,7 @@ import parkings from "../api/parkings.json";
 import { Link } from "react-router-dom";
 import styles from "./MapPage.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import { SpinnerCircularSplit } from "spinners-react";
+import { SpinnerDotted } from "spinners-react";
 
 export default function MapPage() {
   const [map, setMap] = useState(null);
@@ -101,12 +101,11 @@ export default function MapPage() {
     <div className={styles.mapPageContainer}>
       {isLoading ? (
         <div className={styles.spinnerContainer}>
-          <SpinnerCircularSplit
+          <SpinnerDotted
             size={90}
             thickness={145}
             speed={100}
             color="rgba(57, 105, 172, 1)"
-            secondaryColor="rgba(0, 0, 0, 0.48)"
           />
         </div>
       ) : selectedParking ? (
@@ -149,12 +148,11 @@ export default function MapPage() {
           </GoogleMap>
         ) : (
           <div className={styles.spinnerContainer}>
-            <SpinnerCircularSplit
+            <SpinnerDotted
               size={90}
               thickness={145}
               speed={100}
               color="rgba(57, 105, 172, 1)"
-              secondaryColor="rgba(0, 0, 0, 0.48)"
             />
           </div>
         )}
