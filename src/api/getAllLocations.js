@@ -1,0 +1,81 @@
+const locationsString = JSON.stringify({
+  parkinSpot: [
+    {
+      _id: "66154aa7c54844ab36c60b0b",
+      location: [
+        {
+          lat: 48.213594,
+          lng: 11.574128,
+          _id: "66154aa7c54844ab36c60b0c",
+        },
+      ],
+      note: "test",
+      postalCode: "123456",
+      hauseNumber: "10",
+      streetName: "str1",
+      title: "Mering",
+      bookingStatus: "not-set",
+      price: 10,
+      startDate: "2023-03-01T18:00:00Z",
+      endDate: "2023-03-01T17:00:00Z",
+      user: "66154aa7c54844ab36c60b07",
+      __v: 0,
+      bookings: [
+        {
+          _id: "66158e8bb6883614d30ae7eb",
+          bookingStatus: "CHECKIN",
+          startDate: "2024-04-01T18:00:00Z",
+          endDate: "2024-04-01T17:00:00Z",
+          parkingSpots: ["66154aa7c54844ab36c60b0b"],
+          __v: 0,
+          user: "660dd32861c7ae4de674469c",
+        },
+      ],
+    },
+    {
+      bookings: [],
+      _id: "66154b0cc54844ab36c60b15",
+      location: [
+        {
+          lat: 48.3517,
+          lng: 11.4781,
+          _id: "66154b0cc54844ab36c60b16",
+        },
+      ],
+      note: "test",
+      postalCode: "123456",
+      hauseNumber: "10",
+      streetName: "str1",
+      title: "Augsburg",
+      bookingStatus: "not-set",
+      price: 15,
+      startDate: "2023-03-01T18:00:00Z",
+      endDate: "2023-03-01T17:00:00Z",
+      user: "66154b0cc54844ab36c60b11",
+      __v: 0,
+    },
+    {
+      bookings: [],
+      _id: "66154b4ec54844ab36c60b1f",
+      location: [
+        {
+          lat: 48.1371,
+          lng: 11.5761,
+          _id: "66154b4ec54844ab36c60b20",
+        },
+      ],
+      note: "test",
+      postalCode: "123456",
+      hauseNumber: "15",
+      streetName: "str1",
+      title: "Freising",
+      bookingStatus: "not-set",
+      price: 20,
+      startDate: "2023-03-01T18:00:00Z",
+      endDate: "2023-03-01T17:00:00Z",
+      user: "66154b4cc54844ab36c60b1b",
+      __v: 0,
+    },
+  ],
+});
+export default locationsString;
