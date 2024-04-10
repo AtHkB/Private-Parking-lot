@@ -84,7 +84,7 @@ const SearchBar = () => {
                 </button>
               </div>
             </form>
-            {loading && <Spinner />} {/* Display spinner if loading */}
+
             <div className={styles.item}>
               <img
                 src={threeSteps}

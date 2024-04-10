@@ -7,6 +7,7 @@ import { useParams, useNavigate } from "react-router";
 
 const SignupPage = () => {
   const navigate = useNavigate();
+  const [sendLocation, setSendLocation] = useState(null);
   const [signupData, setSignupData] = useState({
     email: "",
     password: "",
@@ -16,6 +17,8 @@ const SignupPage = () => {
     postalCode: "",
     streetName: "",
     houseNumber: "",
+    title: "",
+    price: "",
     note: "",
     idCard: null,
   });
@@ -89,20 +92,22 @@ const SignupPage = () => {
     setIsLoading(true);
     setError(null);
 
-    let endpoint = "http://localhost:8081/users/signup";
+    let endpoint = import.meta.env.VITE_USER_SIGNUP_URL;
     let requestBody = {
       email: signupData.email,
       password: signupData.password,
       fullName: signupData.fullName,
     };
     if (isParkingOwner) {
-      endpoint = "http://localhost:8081/user-with-parking-spot";
+      endpoint = import.meta.env.VITE_USER_WITH_PARKING_SIGNUP_URL;
       requestBody = {
         ...requestBody,
-        location: signupData.location,
+        location: sendLocation,
         postalCode: signupData.postalCode,
         streetName: signupData.streetName,
-        houseNumber: signupData.houseNumber,
+        hauseNumber: signupData.houseNumber,
+        title: signupData.title,
+        price: Number(signupData.price),
         note: signupData.note,
       };
     }
@@ -134,6 +139,8 @@ const SignupPage = () => {
         postalCode: "",
         streetName: "",
         houseNumber: "",
+        title: "",
+        price: "",
         note: "",
         idCard: null,
       });
@@ -144,7 +151,8 @@ const SignupPage = () => {
     console.log("Signup data:", signupData);
   };
 
-  const handleSelectLocation = () => {
+  const handleSelectLocation = (e) => {
+    e.preventDefault();
     setShowModal(true);
   };
 
@@ -152,6 +160,9 @@ const SignupPage = () => {
     const locationString = `${latitude},${longitude}`;
     setSignupData({ ...signupData, location: locationString });
     setShowModal(false);
+    let myJSONString = `[{ "lat": ${latitude}, "lng": ${longitude} }]`;
+    let myObj = JSON.parse(myJSONString);
+    setSendLocation(myObj);
   };
 
   return (
@@ -164,7 +175,7 @@ const SignupPage = () => {
         backgroundPosition: "center",
       }}
     >
-      <form onSubmit={handleSignupSubmit} className={styles.signupForm}>
+      <form /* onSubmit={handleSignupSubmit} */ className={styles.signupForm}>
         <div className={styles.checkboxWrapper}>
           <h4>Are you a parking owner?</h4>
           <input
@@ -243,6 +254,20 @@ const SignupPage = () => {
         {/* Render additional fields if user is a parking owner */}
         {isParkingOwner && (
           <>
+            <label htmlFor="title" className={styles.inputLabel}>
+              Neighbourhood
+            </label>
+            <input
+              className={styles.inputField}
+              id="title"
+              type="text"
+              placeholder="Neighbourhood"
+              required={true}
+              value={signupData.title}
+              onChange={(e) =>
+                setSignupData({ ...signupData, title: e.target.value })
+              }
+            />
             <label htmlFor="postalCode" className={styles.inputLabel}>
               Postal Code
             </label>
@@ -287,6 +312,20 @@ const SignupPage = () => {
                 setSignupData({ ...signupData, houseNumber: e.target.value })
               }
             />
+            <label htmlFor="price" className={styles.inputLabel}>
+              Price €
+            </label>
+            <input
+              className={styles.inputField}
+              id="price"
+              type="number"
+              placeholder="Price €"
+              required={true}
+              value={signupData.price}
+              onChange={(e) =>
+                setSignupData({ ...signupData, price: e.target.value })
+              }
+            />
 
             <label htmlFor="instructions" className={styles.inputLabel}>
               Instructions to Access the Parking
@@ -302,7 +341,7 @@ const SignupPage = () => {
               }
             ></textarea>
 
-            <label htmlFor="idCard" className={styles.inputLabelID}>
+            {/* <label htmlFor="idCard" className={styles.inputLabelID}>
               Upload ID Card
             </label>
 
@@ -315,7 +354,7 @@ const SignupPage = () => {
                 setSignupData({ ...signupData, idCard: e.target.files[0] })
               }
               className={styles.fileInput}
-            />
+            /> */}
 
             {/* Render the location select button */}
             <div className={styles.mapContainer}>
