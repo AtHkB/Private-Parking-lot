@@ -26,6 +26,7 @@ const App = () => {
             element={user ? <GoogleMapListOne user={user} /> : <LoginPage />}
           />
           <Route path="/map/details/:id" element={<MapPage />} />
+          <Route path="/map" element={<MapPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/auth" element={<AuthRouter />} />
