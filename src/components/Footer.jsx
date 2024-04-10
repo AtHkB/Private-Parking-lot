@@ -19,9 +19,10 @@ const Footer = () => {
           </div>
           <div className={styles.fcontainerdesc}>
             <p className={styles.fdescription}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-              vestibulum pretium vestibulum. Nullam lobortis euismod purus, eget
-              accumsan quam faucibus ac.
+              Thank you for choosing our private parking app. Your convenience
+              and security are our top priorities. Drive safely, park with ease,
+              and enjoy seamless parking experiences with us. For any
+              assistance, reach out to our support team.
             </p>
           </div>
         </div>

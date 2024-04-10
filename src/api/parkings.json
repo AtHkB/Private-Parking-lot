@@ -82,41 +82,5 @@
       "dailyPrice": 35
     },
     "user": "609a72f89a59fb4bf8825aef"
-  },
-  {
-    "id": 8,
-    "location": {
-      "lat": 50.1109,
-      "lng": 8.6821,
-      "avalabilityFrom": "2024-03-28T08:00:00.000Z",
-      "avalabilityTo": "2024-03-28T19:00:00.000Z",
-      "hourlyPrice": 8,
-      "dailyPrice": 45
-    },
-    "user": "609a72f89a59fb4bf8825aef"
-  },
-  {
-    "id": 9,
-    "location": {
-      "lat": 50.1109,
-      "lng": 8.6821,
-      "avalabilityFrom": "2024-03-28T08:30:00.000Z",
-      "avalabilityTo": "2024-03-28T18:30:00.000Z",
-      "hourlyPrice": 5,
-      "dailyPrice": 30
-    },
-    "user": "609a72f89a59fb4bf8825aef"
-  },
-  {
-    "id": 10,
-    "location": {
-      "lat": 50.1109,
-      "lng": 8.6821,
-      "avalabilityFrom": "2024-03-28T09:00:00.000Z",
-      "avalabilityTo": "2024-03-28T17:00:00.000Z",
-      "hourlyPrice": 7,
-      "dailyPrice": 40
-    },
-    "user": "609a72f89a59fb4bf8825aef"
   }
 ]

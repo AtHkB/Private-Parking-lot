@@ -9,7 +9,6 @@ import Footer from "./Footer";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SpinnerDotted } from "spinners-react";
 
-
 export default function MapPage() {
   const [map, setMap] = useState(null);
   const [currentPosition, setCurrentPosition] = useState(null);
@@ -94,61 +93,10 @@ export default function MapPage() {
     setMap(null);
   }, []);
 
-  // Example of using navigate to redirect to a different route
-  /* const handleSubmit = async () => {
-    navigate('/another-route');
-  }; */
-
   return (
-    <div className={styles.mapPageContainer}>
-      {isLoading ? (
-        <div className={styles.spinnerContainer}>
-          <SpinnerDotted
-            size={90}
-            thickness={145}
-            speed={100}
-            color="rgba(57, 105, 172, 1)"
-          />
-        </div>
-      ) : selectedParking ? (
-        <div className={styles.suggestionCardsContainer}>
-          <div className={styles.suggestionCard} key={selectedParking.id}>
-            <h3 className={styles.streetName}>Street name(from form)</h3>
-            <h3 className={styles.hourlyPrice}>
-              Hourly Price: ${selectedParking.location.hourlyPrice}
-            </h3>
-          </div>
-        </div>
-      ) : (
-        <div className={styles.suggestionCardsContainer}>
-          {parkings.map((parking) => (
-            <Link
-              className={styles.link}
-              to={`details/${parking.id}`}
-              key={parking.id}
-            >
-              <div className={styles.suggestionCard} key={parking.id}>
-                <h3 className={styles.streetName}>Street name(from form)</h3>
-                <h3 className={styles.hourlyPrice}>
-                  Hourly Price: ${parking.location.hourlyPrice}
-                </h3>
-              </div>
-            </Link>
-          ))}
-        </div>
-      )}
-      <div className={styles.map}>
-        {isLoaded ? (
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={currentPosition}
-            zoom={10}
-            onLoad={onLoad}
-            onUnmount={onUnmount}
-          >
-            {selectedPosition && <Marker position={selectedPosition} />}
-          </GoogleMap>
-        ) : (
+    <>
+      <div className={styles.mapPageContainer}>
+        {isLoading ? (
           <div className={styles.spinnerContainer}>
             <SpinnerDotted
               size={90}
@@ -157,9 +105,57 @@ export default function MapPage() {
               color="rgba(57, 105, 172, 1)"
             />
           </div>
+        ) : selectedParking ? (
+          <div className={styles.suggestionCardsContainer}>
+            <div className={styles.suggestionCard} key={selectedParking.id}>
+              <h3 className={styles.streetName}>Street name(from form)</h3>
+              <h3 className={styles.hourlyPrice}>
+                Hourly Price: ${selectedParking.location.hourlyPrice}
+              </h3>
+            </div>
+          </div>
+        ) : (
+          <div className={styles.suggestionCardsContainer}>
+            {parkings.map((parking) => (
+              <Link
+                className={styles.link}
+                to={`details/${parking.id}`}
+                key={parking.id}
+              >
+                <div className={styles.suggestionCard} key={parking.id}>
+                  <h3 className={styles.streetName}>Street name(from form)</h3>
+                  <h3 className={styles.hourlyPrice}>
+                    Hourly Price: ${parking.location.hourlyPrice}
+                  </h3>
+                </div>
+              </Link>
+            ))}
+          </div>
         )}
+        <div className={styles.map}>
+          {isLoaded ? (
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={currentPosition}
+              zoom={10}
+              onLoad={onLoad}
+              onUnmount={onUnmount}
+            >
+              {selectedPosition && <Marker position={selectedPosition} />}
+            </GoogleMap>
+          ) : (
+            <div className={styles.spinnerContainer}>
+              <SpinnerDotted
+                size={90}
+                thickness={145}
+                speed={100}
+                color="rgba(57, 105, 172, 1)"
+              />
+            </div>
+          )}
+        </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 }
