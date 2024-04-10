@@ -5,8 +5,10 @@ import { useParams } from "react-router";
 import parkings from "../api/parkings.json";
 import { Link } from "react-router-dom";
 import styles from "./MapPage.module.css";
+import Footer from "./Footer";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SpinnerDotted } from "spinners-react";
+
 
 export default function MapPage() {
   const [map, setMap] = useState(null);
@@ -157,6 +159,7 @@ export default function MapPage() {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 }
