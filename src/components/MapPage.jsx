@@ -6,6 +6,7 @@ import parkings from "../api/parkings.json";
 import { Link } from "react-router-dom";
 import styles from "./MapPage.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import Spinner from "../components/Spinner";
 
 export default function MapPage() {
   const [map, setMap] = useState(null);
