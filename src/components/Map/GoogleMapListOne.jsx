@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
 import { svgMarker, encodeSVG } from "./helpers/svgHelper";
-
+import { SpinnerCircular } from "spinners-react";
 import styles from "../MapPage.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import locationsString from "../../api/getAllLocations";
+import { SpinnerCircularSplit } from "spinners-react";
 
 const GoogleMapListOne = (user) => {
   const navigate = useNavigate();
@@ -77,8 +78,14 @@ const GoogleMapListOne = (user) => {
   return (
     <div className={styles.mapPageContainer}>
       {locations.length == 0 && (
-        <div>
-          <h1>Loading ...</h1>
+        <div className={styles.spinnerContainer}>
+          <SpinnerCircularSplit
+            size={90}
+            thickness={145}
+            speed={100}
+            color="rgba(57, 105, 172, 1)"
+            secondaryColor="rgba(0, 0, 0, 0.48)"
+          />
         </div>
       )}
       {locations.length !== 0 && (
