@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import parkings from "../api/parkings.json";
 import { Link } from "react-router-dom";
 import styles from "./MapPage.module.css";
+import Footer from "./Footer";
 
 export default function MapPage() {
   const [map, setMap] = useState(null);
@@ -113,6 +114,7 @@ export default function MapPage() {
           <div>Loading...</div>
         )}
       </div>
+      <Footer />
     </div>
   );
 }
