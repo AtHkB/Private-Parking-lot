@@ -236,3 +236,10 @@ input[type="checkbox"]:checked:focus + .rocker .switchLeft + .switchRight {
 .checkboxWrapper input[type="checkbox"] {
   display: none;
 }
+
+.spinnerContainer {
+  width: 100vw;
+  display: flex;
+  margin-left: 45%;
+  margin-top: 15%;
+}

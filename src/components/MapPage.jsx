@@ -6,7 +6,7 @@ import parkings from "../api/parkings.json";
 import { Link } from "react-router-dom";
 import styles from "./MapPage.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import Spinner from "../components/Spinner";
+import { SpinnerCircularSplit } from "spinners-react";
 
 export default function MapPage() {
   const [map, setMap] = useState(null);
@@ -140,7 +140,15 @@ export default function MapPage() {
             {selectedPosition && <Marker position={selectedPosition} />}
           </GoogleMap>
         ) : (
-          <Spinner /> // Display spinner while Google Maps is loading
+          <div className={styles.spinnerContainer}>
+            <SpinnerCircularSplit
+              size={90}
+              thickness={145}
+              speed={100}
+              color="rgba(57, 105, 172, 1)"
+              secondaryColor="rgba(0, 0, 0, 0.48)"
+            />
+          </div>
         )}
       </div>
     </div>

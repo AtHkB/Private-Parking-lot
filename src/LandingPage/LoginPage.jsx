@@ -3,6 +3,7 @@ import { AuthContext } from "../context/authContext";
 import styles from "./LoginPage.module.css";
 import { useNavigate } from "react-router-dom";
 import backgroundImage from "../assets/backgroundLogin.jpg";
+import { SpinnerCircularSplit } from "spinners-react";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -54,56 +55,68 @@ const LoginPage = () => {
         backgroundPosition: "center",
       }}
     >
-      <form onSubmit={handleLoginSubmit} className={styles.loginForm}>
-        <div className={styles.checkboxWrapper}>
-          <h4>Are you a parking owner?</h4>
-          <input
-            id="checkboxInput"
-            type="checkbox"
-            className={styles.checkboxInput}
+      {isLoading ? (
+        <div className={styles.spinnerContainer}>
+          <SpinnerCircularSplit
+            size={90}
+            thickness={145}
+            speed={100}
+            color="rgba(57, 105, 172, 1)"
+            secondaryColor="rgba(0, 0, 0, 0.48)"
           />
-          <label htmlFor="checkboxInput" className={styles.rocker}>
-            <span className={styles.switchLeft}>Yes</span>
-            <span className={styles.switchRight}>No</span>
-          </label>
         </div>
+      ) : (
+        <form onSubmit={handleLoginSubmit} className={styles.loginForm}>
+          <div className={styles.checkboxWrapper}>
+            <h4>Are you a parking owner?</h4>
+            <input
+              id="checkboxInput"
+              type="checkbox"
+              className={styles.checkboxInput}
+            />
+            <label htmlFor="checkboxInput" className={styles.rocker}>
+              <span className={styles.switchLeft}>Yes</span>
+              <span className={styles.switchRight}>No</span>
+            </label>
+          </div>
 
-        <label htmlFor="email" className={styles.inputLabel}>
-          Email
-        </label>
-        <input
-          className={styles.inputField}
-          id="email"
-          type="email"
-          placeholder="Email"
-          required={true}
-          value={loginData.email}
-          onChange={(e) =>
-            setLoginData({ ...loginData, email: e.target.value })
-          }
-        />
+          <label htmlFor="email" className={styles.inputLabel}>
+            Email
+          </label>
+          <input
+            className={styles.inputField}
+            id="email"
+            type="email"
+            placeholder="Email"
+            required={true}
+            value={loginData.email}
+            onChange={(e) =>
+              setLoginData({ ...loginData, email: e.target.value })
+            }
+          />
 
-        <label htmlFor="password" className={styles.inputLabel}>
-          Password
-        </label>
-        <input
-          className={styles.inputField}
-          id="password"
-          type="password"
-          placeholder="**********"
-          required={true}
-          value={loginData.password}
-          onChange={(e) =>
-            setLoginData({ ...loginData, password: e.target.value })
-          }
-        />
+          <label htmlFor="password" className={styles.inputLabel}>
+            Password
+          </label>
+          <input
+            className={styles.inputField}
+            id="password"
+            type="password"
+            placeholder="**********"
+            required={true}
+            value={loginData.password}
+            onChange={(e) =>
+              setLoginData({ ...loginData, password: e.target.value })
+            }
+          />
 
-        <button className={styles.submitButton} type="submit">
-          Login
-        </button>
+          <button className={styles.submitButton} type="submit">
+            Login
+          </button>
 
-        {error && <div className={styles.error}>{error}</div>}
-      </form>
+          {error && <div className={styles.error}>{error}</div>}
+        </form>
+      )}
     </div>
   );
 };

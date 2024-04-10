@@ -7,8 +7,6 @@ import threeSteps from "../assets/3.png";
 import styles from "./SearchBar.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
-import Spinner from "../components/Spinner";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
@@ -30,7 +28,7 @@ const SearchBar = () => {
       endDate: endDate ? endDate.toISOString() : null,
     }).toString();
 
-    navigate(`/map?${queryString}`);
+    navigate(`/gmap?${queryString}`);
   };
 
   return (
