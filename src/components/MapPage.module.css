@@ -60,3 +60,10 @@
   margin-bottom: 1rem;
   text-decoration: none; /* Apply text-decoration to the card itself */
 }
+
+.spinnerContainer {
+  width: 100vw;
+  display: flex;
+  margin-left: 45%;
+  margin-top: 15%;
+}

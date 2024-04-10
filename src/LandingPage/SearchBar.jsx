@@ -2,27 +2,33 @@ import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import backgroundImage from "../assets/background2.jpg";
-import myImage from "../assets/expl10 .png";
+import myImage from "../assets/landing.png";
 import threeSteps from "../assets/3.png";
 import styles from "./SearchBar.module.css";
-import Navbar from "./Navbar";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const SearchBar = ({ onSearch, onSearchWithCriteria }) => {
-  const [query, setQuery] = React.useState("");
-  const [startDate, setStartDate] = React.useState(null);
-  const [endDate, setEndDate] = React.useState(null);
+const SearchBar = () => {
+  const [query, setQuery] = useState("");
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setQuery(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (startDate && endDate) {
-      onSearchWithCriteria(query, startDate, endDate);
-    } else {
-      onSearch(query);
-    }
+
+    const queryString = new URLSearchParams({
+      q: query,
+      startDate: startDate ? startDate.toISOString() : null,
+      endDate: endDate ? endDate.toISOString() : null,
+    }).toString();
+
+    navigate(`/gmap?${queryString}`);
   };
 
   return (
@@ -55,10 +61,10 @@ const SearchBar = ({ onSearch, onSearchWithCriteria }) => {
                   onChange={(date) => setStartDate(date)}
                   showTimeSelect
                   timeFormat="HH:mm"
-                  timeIntervals={15}
+                  timeIntervals={60}
                   dateFormat="MMMM d, yyyy h:mm aa"
                   className={styles.datePicker}
-                  placeholderText="Date - Time"
+                  placeholderText="Select Date"
                 />
                 <span className={styles.dateSeparator}>to</span>
                 <DatePicker
@@ -66,7 +72,7 @@ const SearchBar = ({ onSearch, onSearchWithCriteria }) => {
                   onChange={(date) => setEndDate(date)}
                   showTimeSelect
                   timeFormat="HH:mm"
-                  timeIntervals={15}
+                  timeIntervals={60}
                   dateFormat="MMMM d, yyyy h:mm aa"
                   className={styles.datePicker}
                   placeholderText="Date - Time"
@@ -76,6 +82,7 @@ const SearchBar = ({ onSearch, onSearchWithCriteria }) => {
                 </button>
               </div>
             </form>
+
             <div className={styles.item}>
               <img
                 src={threeSteps}
