@@ -240,6 +240,6 @@ input[type="checkbox"]:checked:focus + .rocker .switchLeft + .switchRight {
 .spinnerContainer {
   width: 100vw;
   display: flex;
-  margin-left: 45%;
-  margin-top: 15%;
+  align-items: center;
+  justify-content: center;
 }

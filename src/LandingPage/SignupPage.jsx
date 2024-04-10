@@ -352,20 +352,20 @@ const SignupPage = () => {
                 }
               ></textarea>
 
-              {/* <label htmlFor="idCard" className={styles.inputLabelID}>
-              Upload ID Card
-            </label>
+              <label htmlFor="idCard" className={styles.inputLabelID}>
+                Upload ID Card
+              </label>
 
-            <input
-              type="file"
-              id="idCard"
-              accept=".jpg, .jpeg, .png, .pdf"
-              required={true}
-              onChange={(e) =>
-                setSignupData({ ...signupData, idCard: e.target.files[0] })
-              }
-              className={styles.fileInput}
-            /> */}
+              <input
+                type="file"
+                id="idCard"
+                accept=".jpg, .jpeg, .png, .pdf"
+                required={true}
+                onChange={(e) =>
+                  setSignupData({ ...signupData, idCard: e.target.files[0] })
+                }
+                className={styles.fileInput}
+              />
 
               {/* Render the location select button */}
               <div className={styles.mapContainer}>
