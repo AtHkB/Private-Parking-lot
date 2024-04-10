@@ -5,7 +5,7 @@ import { useParams } from "react-router";
 import parkings from "../api/parkings.json";
 import { Link } from "react-router-dom";
 import styles from "./MapPage.module.css";
-import Spinner from "./Spinner";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function MapPage() {
   const [map, setMap] = useState(null);
@@ -14,6 +14,32 @@ export default function MapPage() {
   const [isLoading, setIsLoading] = useState(true); // Add loading state
   const { id } = useParams();
   const [selectedParking, setSelectedParking] = useState(null);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const getSearchParams = () => {
+    return new URLSearchParams(location.search);
+  };
+
+  useEffect(() => {
+    const queryParams = getSearchParams();
+
+    const query = queryParams.get("q");
+    const startDate = queryParams.get("startDate");
+    const endDate = queryParams.get("endDate");
+
+    console.log("Query:", query);
+    console.log("Start Date:", startDate);
+    console.log("End Date:", endDate);
+
+    // fetching parking spots based on query, startDate, and endDate goes here
+    if (id) {
+      const parking = parkings.find((parking) => parking.id === parseInt(id));
+      setSelectedParking(parking);
+    } else {
+      setSelectedParking(null);
+    }
+  }, [location.search]);
 
   const containerStyle = {
     width: "73vw",
@@ -65,14 +91,10 @@ export default function MapPage() {
     setMap(null);
   }, []);
 
-  useEffect(() => {
-    if (id) {
-      const parking = parkings.find((parking) => parking.id === parseInt(id));
-      setSelectedParking(parking);
-    } else {
-      setSelectedParking(null);
-    }
-  }, [id]);
+  // Example of using navigate to redirect to a different route
+  /* const handleSubmit = async () => {
+    navigate('/another-route');
+  }; */
 
   return (
     <div className={styles.mapPageContainer}>
