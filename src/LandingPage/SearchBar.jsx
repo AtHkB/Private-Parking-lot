@@ -8,6 +8,7 @@ import styles from "./SearchBar.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
+import Spinner from "../components/Spinner";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
@@ -44,7 +45,6 @@ const SearchBar = () => {
         <div className={styles.wrapper}>
           <div className={styles.search}>
             <img src={myImage} alt="My Image" className={styles.image} />
-
             <form onSubmit={handleSubmit} className={styles.searchForm}>
               <div className={styles.searchInputs}>
                 <input
@@ -84,6 +84,7 @@ const SearchBar = () => {
                 </button>
               </div>
             </form>
+            {loading && <Spinner />} {/* Display spinner if loading */}
             <div className={styles.item}>
               <img
                 src={threeSteps}
