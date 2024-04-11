@@ -28,7 +28,7 @@
   min-width: 100vw;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -45,6 +45,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 5px;
+  margin-left: -2rem;
 }
 
 .flogo {
