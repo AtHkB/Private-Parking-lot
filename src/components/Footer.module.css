@@ -5,11 +5,13 @@
 }
 
 .footer {
+  display: flex;
+  flex-direction: column;
   background-color: #253d5f;
   /* border: #83500e 1px solid;*/
   color: #253d5f;
   padding: 40px 20px;
-  position: fixed;
+  /* position: fixed; */
   max-height: 27%;
   bottom: 0;
   right: 0%;
@@ -22,10 +24,11 @@
 .fcontainer {
   /* border: #e8d6be 1px solid;*/
   top: 0%;
-  max-width: 1350px;
+  /* max-width: 1350px; */
+  min-width: 100vw;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -42,6 +45,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 5px;
+  margin-left: -2rem;
 }
 
 .flogo {
@@ -69,12 +73,14 @@
 
 .fdescription {
   margin-bottom: 20px;
+  text-align: justify;
 }
 
 .fsocialIcons {
   margin-top: 30px;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  gap: 1rem;
   max-width: 100px;
 }
 
@@ -129,5 +135,5 @@
 .fcopyRight {
   text-align: center;
   margin-top: 0;
-  margin-left: 4rem;
+  margin-left: 50%;
 }
