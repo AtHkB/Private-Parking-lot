@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, useCallback } from "react";
+import { useEffect, useState, useContext, useCallback } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import { AuthContext } from "../context/authContext";
 import { useParams } from "react-router";

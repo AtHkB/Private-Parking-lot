@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import styles from "./LoginPage.module.css";
 import { useNavigate } from "react-router-dom";
-import backgroundImage from "../assets/backgroundLogin.jpg";
+import backgroundImage from "../assets/new1.jpg";
 import { SpinnerDotted } from "spinners-react";
 
 const LoginPage = () => {
