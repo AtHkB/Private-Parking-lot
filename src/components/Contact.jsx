@@ -206,36 +206,6 @@ const Contact = () => {
             }
           />
 
-          <label htmlFor="password" className={styles.inputLabel}>
-            Password
-          </label>
-          <input
-            className={styles.inputField}
-            id="password"
-            type="password"
-            placeholder="**********"
-            required={true}
-            value={signupData.password}
-            onChange={(e) =>
-              setSignupData({ ...signupData, password: e.target.value })
-            }
-          />
-
-          <label htmlFor="confirmPassword" className={styles.inputLabel}>
-            Confirm Password
-          </label>
-          <input
-            className={styles.inputField}
-            id="confirmPassword"
-            type="password"
-            placeholder="**********"
-            required={true}
-            value={signupData.confirmPassword}
-            onChange={(e) =>
-              setSignupData({ ...signupData, confirmPassword: e.target.value })
-            }
-          />
-
           <label htmlFor="instructions" className={styles.inputLabel}>
             Contact us
           </label>

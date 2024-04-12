@@ -1,9 +1,9 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import backgroundImage from "../assets/background2.jpg";
+import backgroundImage from "../assets/a1.jpg";
 import myImage from "../assets/landing.png";
-import threeSteps from "../assets/3.png";
+import threeSteps from "../assets/lalalala.png";
 import styles from "./SearchBar.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";

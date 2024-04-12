@@ -1,6 +1,5 @@
 import styles from "./About.module.css";
 import backgroundPic from "../assets/new2.jpg";
-import icon from "../assets/logoblue.png";
 
 const About = () => {
   return (
@@ -21,7 +20,6 @@ const About = () => {
       <div className={`${styles.head}`}>
         <h1 className={`${styles.title}`}>About us</h1>
         <div className={`${styles.descriptionContainer}`}>
-          <img src={icon} alt="Icon" className={`${styles.icon}`} />
           <p className={`${styles.description}`}>
             Welcome to PrivateParking, where the world of parking meets digital
             innovation, brought to you by the dynamic trio: Mr. Saeed, Mr. Ata,
