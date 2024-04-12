@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0400..700;1,400..700&display=swap");
+
+.signupForm,
+.inputLabel,
+.inputField,
+.submitButton,
+.inputLabelID,
+.textarea {
+  font-family: "Cabin", sans-serif;
+  display: block;
+}
+
+.signupcontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signupForm {
+  width: 400px;
+  padding: 2rem;
+  color: #253d5f;
+  background-color: #ffffff97;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.422);
+  z-index: 1;
+}
+
+.textarea {
+  display: block;
+  width: 392px;
+  height: 60px;
+  margin-bottom: 1rem;
+  text-indent: 0.45rem;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #253d5f;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: color 0.4s;
+  margin: 3rem 1rem 1rem 0;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/* Custom file button */
+/* .customFileButton {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #253d5f;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: color 0.4s;
+  margin: 0 1rem 0 0;
+} */
+
+.inputLabel {
+  font-weight: bold;
+  display: block;
+}
+
+.inputLabelID {
+  border: 1px solid #e5e5e5;
+  border-radius: 0.25rem;
+  padding: 5px 15px;
+  position: absolute;
+  /* font-family: "Helvetica", sans-serif;*/
+  transition: 0.5s; /* 
+  margin-left: 43px;
+  margin-top: 2px; */
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.inputLabelID:hover {
+  background-color: #eee;
+}
+
+.fileInput,
+.selectedFile {
+  display: none;
+}
+
+.inputField {
+  width: 382px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: #253d5f;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: color 0.4s;
+  margin-top: 1rem;
+}
+
+.submitButton:hover,
+.button:hover,
+.customFileButton:hover {
+  /* background-color: #253d5f; */
+  color: #ab1d1d;
+}
+
+.error {
+  color: red;
+  margin-top: 0.5rem;
+}
+
+/*   Y E S  /  N O   BUTTON */
+
+.checkboxWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  justify-items: center;
+}
+
+.rocker {
+  margin-top: 1em;
+  display: inline-block;
+  position: relative;
+  font-size: 0.5em;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  color: #888;
+  width: 7em;
+  height: 4em;
+  overflow: hidden;
+  border-bottom: 0.5em solid #eee;
+}
+
+.rockerSmall {
+  font-size: 0.75em;
+}
+
+.rocker::before {
+  content: "";
+  position: absolute;
+  top: 0.5em;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #999;
+  border: 0.5em solid #eee;
+  border-bottom: 0;
+}
+
+.switchLeft,
+.switchRight {
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5em;
+  width: 3em;
+  transition: 0.2s;
+  user-select: none;
+}
+
+.switchLeft {
+  height: 2.4em;
+  width: 2.75em;
+  left: 0.85em;
+  bottom: 0.4em;
+  background-color: #ddd;
+  transform: rotate(15deg) skewX(15deg);
+}
+
+.switchRight {
+  right: 0.5em;
+  bottom: 0;
+  background-color: #bd5757;
+  color: #fff;
+}
+
+.switchLeft::before,
+.switchRight::before {
+  content: "";
+  position: absolute;
+  width: 0.4em;
+  height: 2.45em;
+  bottom: -0.45em;
+  background-color: #ccc;
+  transform: skewY(-65deg);
+}
+
+.switchLeft::before {
+  left: -0.4em;
+}
+
+.switchRight::before {
+  right: -0.375em;
+  background-color: transparent;
+  transform: skewY(65deg);
+}
+
+/* Adjusted checkbox selector */
+input[type="checkbox"]:checked + .rocker .switchLeft {
+  background-color: #0084d0;
+  color: #fff;
+  bottom: 0px;
+  left: 0.5em;
+  height: 2.5em;
+  width: 3em;
+  transform: rotate(0deg) skewX(0deg);
+}
+
+input[type="checkbox"]:checked + .rocker .switchLeft::before {
+  background-color: transparent;
+  width: 3.0833em;
+}
+
+input[type="checkbox"]:checked + .rocker .switchLeft + .switchRight {
+  background-color: #ddd;
+  color: #888;
+  bottom: 0.4em;
+  right: 0.8em;
+  height: 2.4em;
+  width: 2.75em;
+  transform: rotate(-15deg) skewX(-15deg);
+}
+
+input[type="checkbox"]:checked + .rocker .switchLeft + .switchRight::before {
+  background-color: #ccc;
+}
+
+/* Keyboard Users */
+input[type="checkbox"]:focus + .rocker .switchLeft {
+  color: #333;
+}
+
+input[type="checkbox"]:checked:focus + .rocker .switchLeft {
+  color: #fff;
+}
+
+input[type="checkbox"]:focus + .rocker .switchLeft + .switchRight {
+  color: #fff;
+}
+
+input[type="checkbox"]:checked:focus + .rocker .switchLeft + .switchRight {
+  color: #333;
+}
+
+.checkboxWrapper input[type="checkbox"] {
+  display: none;
+}
+
+.spinnerContainer {
+  width: 100vw;
+  display: flex;
+  margin-left: 45%;
+  margin-top: 15%;
+}

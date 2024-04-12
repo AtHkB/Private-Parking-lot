@@ -11,6 +11,7 @@ import { AuthContext } from "./context/authContext";
 import MainLayout from "./LandingPage/MainLayout";
 import GoogleMapListOne from "./components/Map/GoogleMapListOne";
 import About from "./components/About";
+import Contact from "./components/Contact";
 
 const App = () => {
   const { user } = useContext(AuthContext);
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/auth" element={<AuthRouter />} />
           <Route path="/About" element={<About />} />
+          <Route path="/Contact" element={<Contact />} />
         </Routes>
       </MainLayout>
     </Router>
