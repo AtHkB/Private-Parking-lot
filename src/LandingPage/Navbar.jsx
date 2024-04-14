@@ -2,13 +2,18 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import { Link } from "react-router-dom";
-import { useJwt } from "react-jwt";
+import useAuthToken from "../helpers/useAuthToken";
 import parkLogo from "../assets/Private-parking-4-4-2024 (1).png";
 import styles from "./Navbar.module.css";
+import Booking from "./Booking";
 
-const Navbar = () => {
+function Navbar({ token }) {
+  const decodeTokenData = useAuthToken(token);
+  //console.log("decodeTokenData", decodeTokenData);
   const navigate = useNavigate();
-  const { logout, user } = useContext(AuthContext);
+
+  const { logout } = useContext(AuthContext);
+
   const bookingResponse = localStorage.getItem(
     "booking-request-response-message"
   );
@@ -17,11 +22,9 @@ const Navbar = () => {
   };
 
   const handleLogOut = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("token");
     logout();
   };
-
-  const { decodedToken } = useJwt(user?.token);
 
   const handleSignupClick = () => {
     navigate("/signup");
@@ -37,12 +40,16 @@ const Navbar = () => {
 
       <div className={styles.linksContainer}>
         {bookingResponse && <p>{bookingResponse}</p>}
-        {user && (
-          <button className={styles.navButton} onClick={handleLogOut}>
-            Logout
-          </button>
+        {token && (
+          <>
+            <Booking userinfo={decodeTokenData} />
+            <button className={styles.navButton} onClick={handleLogOut}>
+              Logout
+            </button>
+            <span>{decodeTokenData.fullName}</span>
+          </>
         )}
-        {!user && (
+        {!token && (
           <>
             <button className={styles.navButton} onClick={handleLoginClick}>
               Login
@@ -55,6 +62,6 @@ const Navbar = () => {
       </div>
     </nav>
   );
-};
+}
 
 export default Navbar;

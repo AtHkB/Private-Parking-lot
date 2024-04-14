@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
 import { svgMarker, encodeSVG } from "./helpers/svgHelper";
-
 import styles from "../MapPage.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import locationsString from "../../api/getAllLocations";
+import useAuthToken from "../../helpers/useAuthToken";
+//import locationsString from "../../api/getAllLocations";
 
-const GoogleMapListOne = (user) => {
+const GoogleMapListOne = ({ token }) => {
   const navigate = useNavigate();
+  const decodeTokenData = useAuthToken(token);
+
   const [selectedPosition, setSelectedPosition] = useState(null);
   const [searchParams] = useSearchParams();
   //const parkings = JSON.parse(locationsString.replaceAll("_id", "id"));
@@ -34,15 +36,17 @@ const GoogleMapListOne = (user) => {
     const startDate = searchParams.get("startDate");
     const endDate = searchParams.get("endDate");
     const { id } = selectedPosition;
-    console.log("uuser", user.user);
+    console.log("uuser", decodeTokenData.userId);
+    console.log("token", token);
+
     const response = await fetch(import.meta.env.VITE_BOOKING_CREATE, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${user.user.token}`,
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userID: user.user.id,
+        userID: decodeTokenData.userId,
         parkingspotID: id,
         startDate,
         endDate,

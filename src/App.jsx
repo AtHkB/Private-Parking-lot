@@ -11,11 +11,11 @@ import { AuthContext } from "./context/authContext";
 import MainLayout from "./LandingPage/MainLayout";
 import GoogleMapListOne from "./components/Map/GoogleMapListOne";
 const App = () => {
-  const { user } = useContext(AuthContext);
+  const { token } = useContext(AuthContext);
   return (
     <Router>
       <MainLayout>
-        <Navbar />
+        <Navbar token={token} />
         <Routes>
           <Route path="/" element={<SearchBar />}>
             <Route index element={<ExplanationContainer />} />
@@ -23,7 +23,7 @@ const App = () => {
           {/* <Route path="map" element={<MapPage />} /> */}
           <Route
             path="/gmap"
-            element={user ? <GoogleMapListOne user={user} /> : <LoginPage />}
+            element={token ? <GoogleMapListOne token={token} /> : <LoginPage />}
           />
           <Route path="/map/details/:id" element={<MapPage />} />
           <Route path="/login" element={<LoginPage />} />

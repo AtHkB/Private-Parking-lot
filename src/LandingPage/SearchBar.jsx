@@ -30,7 +30,7 @@ const SearchBar = () => {
       endDate: endDate ? endDate.toISOString() : null,
     }).toString();
 
-    navigate(`/map?${queryString}`);
+    navigate(`/gmap?${queryString}`);
   };
 
   return (

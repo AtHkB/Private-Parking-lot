@@ -1,0 +1,37 @@
+.navBookingButton {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.7rem;
+  font-weight: bold;
+
+  color: #8fb6ee;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: color 0.3s; /* Add a transition for smooth color change */
+}
+
+.navBookingButton:hover {
+  /* background-color: #3578c7;*/
+  color: #ab1d1d;
+  border: 2px solid #ab1d1d;
+}
+
+.navNoBookingButton {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #253d5f;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: color 0.3s; /* Add a transition for smooth color change */
+}
+.navNoBookingButton:hover {
+  /* background-color: #3578c7;*/
+  color: #253d5f;
+  border: 1px solid #8fb6ee;
+}
