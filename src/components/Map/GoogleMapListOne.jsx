@@ -5,7 +5,6 @@ import styles from "../MapPage.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import useAuthToken from "../../helpers/useAuthToken";
 import Footer from "../Footer";
-//import locationsString from "../../api/getAllLocations";
 
 const GoogleMapListOne = ({ token, msg, handleMessage }) => {
   const navigate = useNavigate();
