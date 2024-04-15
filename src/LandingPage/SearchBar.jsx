@@ -30,7 +30,11 @@ const SearchBar = () => {
 
     navigate(`/gmap?${queryString}`);
   };
-
+  const handleFilterPassedTime = (time) => {
+    const currentDate = new Date();
+    const selectedDate = new Date(time);
+    return currentDate.getTime() < selectedDate.getTime();
+  };
   return (
     <div className={styles.landingWrapper}>
       <div
@@ -58,11 +62,22 @@ const SearchBar = () => {
                 <DatePicker
                   id="startDate"
                   selected={startDate}
-                  onChange={(date) => setStartDate(date)}
+                  onChange={(date) => {
+                    setStartDate(date);
+                    if (date) {
+                      // Calculate one hour ahead of start date
+                      const endDate = new Date(date);
+                      endDate.setHours(date.getHours() + 1);
+                      setEndDate(endDate);
+                    } else {
+                      setEndDate(null);
+                    }
+                  }}
                   showTimeSelect
                   timeFormat="HH:mm"
                   timeIntervals={60}
                   dateFormat="MMMM d, yyyy h:mm aa"
+                  filterTime={handleFilterPassedTime}
                   className={styles.datePicker}
                   placeholderText="Select Date"
                 />
@@ -76,6 +91,39 @@ const SearchBar = () => {
                   dateFormat="MMMM d, yyyy h:mm aa"
                   className={styles.datePicker}
                   placeholderText="Date - Time"
+                  minTime={
+                    startDate &&
+                    endDate &&
+                    startDate.getDate() === endDate.getDate()
+                      ? new Date(new Date().getTime() + 60 * 60 * 1000) // Set minTime to one hour ahead of current time if start and end date are same
+                      : startDate
+                      ? new Date(
+                          startDate.getFullYear(),
+                          startDate.getMonth(),
+                          startDate.getDate(),
+                          8,
+                          0
+                        )
+                      : new Date(
+                          new Date().getFullYear(),
+                          new Date().getMonth(),
+                          new Date().getDate(),
+                          8,
+                          0
+                        )
+                  } // Set minTime to 8:00 of start date or current day
+                  maxTime={
+                    endDate
+                      ? new Date(
+                          endDate.getFullYear(),
+                          endDate.getMonth(),
+                          endDate.getDate(),
+                          23,
+                          59,
+                          59
+                        )
+                      : null
+                  } // Set maxTime to 23:59:59 of selected "To" day
                 />
                 <button type="submit" className={styles.searchButton}>
                   Search
