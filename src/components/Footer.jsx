@@ -55,18 +55,10 @@ const Footer = () => {
               {" "}
               Contact
             </Link>
-          </div>
-          <div className={styles.flinksColumn}>
-            <p className={styles.fpexploreadmin}>FAQ</p>
-            <a href="#" className={styles.flink}>
-              Style guide
-            </a>
-            <a href="#" className={styles.flink}>
-              Licenses
-            </a>
-            <a href="#" className={styles.flink}>
-              Instructions
-            </a>
+            <Link to="/About" className={styles.flink}>
+              {" "}
+              About
+            </Link>
           </div>
         </div>
       </div>
