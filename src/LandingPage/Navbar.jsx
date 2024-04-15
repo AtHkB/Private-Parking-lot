@@ -57,7 +57,7 @@ function Navbar({ token, msg, handleMessage }) {
             <button className={styles.navButton} onClick={handleLogOut}>
               Logout
             </button>
-            <span>{fullName}</span>
+            <span style={{ color: "#fff" }}>{fullName}</span>
           </>
         )}
         {!token && (
