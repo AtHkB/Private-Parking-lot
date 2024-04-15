@@ -12,7 +12,7 @@ import MainLayout from "./LandingPage/MainLayout";
 import GoogleMapListOne from "./components/Map/GoogleMapListOne";
 import About from "./components/About";
 import Contact from "./components/Contact";
-
+import Career from "./components/Career";
 
 const App = () => {
   const { token } = useContext(AuthContext);
@@ -60,6 +60,7 @@ const App = () => {
           <Route path="/auth" element={<AuthRouter />} />
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
+          <Route path="/Career" element={<Career />} />
         </Routes>
       </MainLayout>
     </Router>

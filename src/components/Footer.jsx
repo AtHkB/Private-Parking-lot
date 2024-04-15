@@ -55,9 +55,9 @@ const Footer = () => {
               {" "}
               Contact
             </Link>
-            <Link to="/About" className={styles.flink}>
+            <Link to="/Career" className={styles.flink}>
               {" "}
-              About
+              Career
             </Link>
           </div>
         </div>
