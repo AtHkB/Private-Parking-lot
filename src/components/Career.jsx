@@ -35,7 +35,15 @@ function Career() {
         <div className={styles.Ata}>
           <img src={AtaImg} alt="Ata image" className={styles.AtaImg} />
           <h2>Mr. Ata</h2>
-          <p>Description of job 3</p>
+          <p>
+            Join our dynamic team and explore endless opportunities for personal
+            and professional growth. At our company, innovation is at the core
+            of everything we do. From harnessing cutting-edge technology to
+            hosting engaging events, we foster an environment where
+            collaboration thrives across all departments. If you're seeking
+            exciting challenges and crave the experience of being part of a
+            diverse and vibrant workplace, we invite you to join our team.
+          </p>
         </div>
       </div>
     </div>
