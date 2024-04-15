@@ -10,7 +10,9 @@ import MapPage from "./components/MapPage";
 import { AuthContext } from "./context/authContext";
 import MainLayout from "./LandingPage/MainLayout";
 import GoogleMapListOne from "./components/Map/GoogleMapListOne";
-import GoogleMap from "./components/Map/GoogleMap";
+import About from "./components/About";
+import Contact from "./components/Contact";
+
 
 const App = () => {
   const { token } = useContext(AuthContext);
@@ -51,11 +53,13 @@ const App = () => {
             }
           />
 
-          <Route path="/gmap2" element={<GoogleMap />} />
           <Route path="/map/details/:id" element={<MapPage />} />
+          <Route path="/map" element={<MapPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/auth" element={<AuthRouter />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Contact" element={<Contact />} />
         </Routes>
       </MainLayout>
     </Router>

@@ -14,7 +14,7 @@ body {
   top: 10rem;
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
+  max-height: 100vh;
 }
 
 .searchbar {
@@ -30,15 +30,16 @@ body {
 
 .image {
   border: #c0bdbd 1px solid;
-  box-shadow: 0 0 10px #c0bdbd, 0 0 0 transparent; /* Remove only the bottom shadow */
+  box-shadow: 0 0 18px #fffdfd, 0 0 0 transparent; /* Remove only the bottom shadow */
   border-bottom: transparent;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 815px;
+  width: 970px;
   height: max-content;
   z-index: 1;
   top: 7rem;
+  border-radius: 0.25rem;
 }
 
 .searchForm {

@@ -21,7 +21,7 @@
   padding: 2rem;
   background-color: #ffffff97;
   border-radius: 0.5rem;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.422);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
   margin-bottom: 7rem;
 }
 
@@ -161,7 +161,7 @@
 .switchRight {
   right: 0.5em;
   bottom: 0;
-  background-color: #bd5757;
+  background-color: #ab1d1d;
   color: #fff;
 }
 
@@ -235,4 +235,11 @@ input[type="checkbox"]:checked:focus + .rocker .switchLeft + .switchRight {
 
 .checkboxWrapper input[type="checkbox"] {
   display: none;
+}
+
+.spinnerContainer {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

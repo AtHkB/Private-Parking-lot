@@ -1,12 +1,13 @@
-import React, { useEffect, useState, useContext, useCallback } from "react";
+import { useEffect, useState, useContext, useCallback } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import { AuthContext } from "../context/authContext";
 import { useParams } from "react-router";
 import parkings from "../api/parkings.json";
 import { Link } from "react-router-dom";
 import styles from "./MapPage.module.css";
+import Footer from "./Footer";
 import { useLocation, useNavigate } from "react-router-dom";
-import Spinner from "../components/Spinner";
+import { SpinnerDotted } from "spinners-react";
 
 export default function MapPage() {
   const [map, setMap] = useState(null);
@@ -69,7 +70,7 @@ export default function MapPage() {
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAP_API_KEY,
   });
 
   const onLoad = useCallback(
@@ -92,57 +93,69 @@ export default function MapPage() {
     setMap(null);
   }, []);
 
-  // Example of using navigate to redirect to a different route
-  /* const handleSubmit = async () => {
-    navigate('/another-route');
-  }; */
-
   return (
-    <div className={styles.mapPageContainer}>
-      {isLoading ? ( // Display spinner while geolocation is loading
-        <Spinner />
-      ) : selectedParking ? (
-        <div className={styles.suggestionCardsContainer}>
-          <div className={styles.suggestionCard} key={selectedParking.id}>
-            <h3 className={styles.streetName}>Street name(from form)</h3>
-            <h3 className={styles.hourlyPrice}>
-              Hourly Price: ${selectedParking.location.hourlyPrice}
-            </h3>
+    <>
+      <div className={styles.mapPageContainer}>
+        {isLoading ? (
+          <div className={styles.spinnerContainer}>
+            <SpinnerDotted
+              size={90}
+              thickness={145}
+              speed={100}
+              color="rgba(57, 105, 172, 1)"
+            />
           </div>
-        </div>
-      ) : (
-        <div className={styles.suggestionCardsContainer}>
-          {parkings.map((parking) => (
-            <Link
-              className={styles.link}
-              to={`details/${parking.id}`}
-              key={parking.id}
-            >
-              <div className={styles.suggestionCard} key={parking.id}>
-                <h3 className={styles.streetName}>Street name(from form)</h3>
-                <h3 className={styles.hourlyPrice}>
-                  Hourly Price: ${parking.location.hourlyPrice}
-                </h3>
-              </div>
-            </Link>
-          ))}
-        </div>
-      )}
-      <div className={styles.map}>
-        {isLoaded ? (
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={currentPosition}
-            zoom={10}
-            onLoad={onLoad}
-            onUnmount={onUnmount}
-          >
-            {selectedPosition && <Marker position={selectedPosition} />}
-          </GoogleMap>
+        ) : selectedParking ? (
+          <div className={styles.suggestionCardsContainer}>
+            <div className={styles.suggestionCard} key={selectedParking.id}>
+              <h3 className={styles.streetName}>Street name(from form)</h3>
+              <h3 className={styles.hourlyPrice}>
+                Hourly Price: ${selectedParking.location.hourlyPrice}
+              </h3>
+            </div>
+          </div>
         ) : (
-          <Spinner /> // Display spinner while Google Maps is loading
+          <div className={styles.suggestionCardsContainer}>
+            {parkings.map((parking) => (
+              <Link
+                className={styles.link}
+                to={`details/${parking.id}`}
+                key={parking.id}
+              >
+                <div className={styles.suggestionCard} key={parking.id}>
+                  <h3 className={styles.streetName}>Street name(from form)</h3>
+                  <h3 className={styles.hourlyPrice}>
+                    Hourly Price: ${parking.location.hourlyPrice}
+                  </h3>
+                </div>
+              </Link>
+            ))}
+          </div>
         )}
+        <div className={styles.map}>
+          {isLoaded ? (
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={currentPosition}
+              zoom={10}
+              onLoad={onLoad}
+              onUnmount={onUnmount}
+            >
+              {selectedPosition && <Marker position={selectedPosition} />}
+            </GoogleMap>
+          ) : (
+            <div className={styles.spinnerContainer}>
+              <SpinnerDotted
+                size={90}
+                thickness={145}
+                speed={100}
+                color="rgba(57, 105, 172, 1)"
+              />
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }

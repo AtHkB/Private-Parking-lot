@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0400..700;1,400..700&display=swap");
+
+.footer {
+  font-family: "Cabin", sans-serif;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  background-color: #253d5f;
+  /* border: #83500e 1px solid;*/
+  color: #ffffff;
+  padding: 40px 20px;
+  /* position: fixed; */
+  max-height: 27%;
+  bottom: 0;
+  right: 0%;
+  width: 75%;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 10px;
+}
+
+.fcontainer {
+  /* border: #e8d6be 1px solid;*/
+  top: 0%;
+  /* max-width: 1350px; */
+  min-width: 100vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.fleftSection {
+  flex: 1;
+  margin-left: 2rem;
+  box-sizing: border-box;
+  max-width: 350px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.flogoContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  margin-left: -2rem;
+}
+
+.flogo {
+  width: 220px;
+  height: 70px;
+  transition: filter 0.8s, color 0.8s;
+}
+
+.flogo:hover {
+  filter: hue-rotate(180deg);
+  color: #ab1d1d;
+}
+
+.flogoContainer img {
+  width: 420px;
+  height: auto;
+}
+
+.fcontainerdesc {
+  display: flex;
+  box-sizing: border-box;
+  text-align: start;
+  /* text-indent: 1rem; */
+}
+
+.fdescription {
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.fsocialIcons {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  max-width: 100px;
+}
+
+.fsocialIcon {
+  color: #ffffff;
+  font-size: 30px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition: filter 0.4s, color 0.4s;
+  width: 40px;
+}
+
+.fsocialIcon:hover {
+  color: #253d5f;
+}
+
+.frightSection {
+  display: flex;
+  align-items: normal;
+  justify-content: center;
+  box-sizing: border-box;
+  max-width: 900px;
+  margin-top: 4.5rem;
+  margin-right: 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.flinksColumn {
+  margin-right: 40px;
+}
+
+.fpexploreadmin {
+  font-weight: 600;
+  text-align: start;
+}
+
+.flink {
+  color: #ffffff;
+  text-align: left;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.flink:hover {
+  text-decoration: none;
+  transform: translateX(10px); /* Move the link 5px to the right on hover */
+  color: #253d5f;
+}
+
+.fcopyRight {
+  text-align: center;
+  margin-top: 0;
+  margin-left: 50%;
+}
