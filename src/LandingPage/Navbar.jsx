@@ -1,32 +1,40 @@
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/authContext";
 import { Link } from "react-router-dom";
-import { useJwt } from "react-jwt";
+import useBookings from "../helpers/useBookings";
+import useAuthToken from "../helpers/useAuthToken";
+//import parkLogo from "../assets/Private-parking-4-4-2024 (1).png";
 import parkLogo from "../assets/whiteLogo.png";
 import styles from "./Navbar.module.css";
+import Booking from "./Booking";
+import Message from "../components/Messages";
 
-const Navbar = () => {
+function Navbar({ token, msg, handleMessage }) {
   const navigate = useNavigate();
-  const { logout, user } = useContext(AuthContext);
-  const bookingResponse = localStorage.getItem(
-    "booking-request-response-message"
-  );
+  const { userId, fullName } = useAuthToken(token);
+  const { bookings, getBookings } = useBookings(userId);
+
+  const { logout } = useContext(AuthContext);
+
   const handleLoginClick = () => {
     navigate("/login");
   };
 
   const handleLogOut = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("token");
     logout();
   };
-
-  const { decodedToken } = useJwt(user?.token);
 
   const handleSignupClick = () => {
     navigate("/signup");
   };
 
+  useEffect(() => {
+    if (msg) {
+      handleMessage(msg);
+    }
+  }, [msg]);
   return (
     <nav className={styles.navbar}>
       <div className={styles.logoContainer}>
@@ -36,13 +44,23 @@ const Navbar = () => {
       </div>
 
       <div className={styles.linksContainer}>
-        {bookingResponse && <p>{bookingResponse}</p>}
-        {user && (
-          <button className={styles.navButton} onClick={handleLogOut}>
-            Logout
-          </button>
+        {msg && <Message message={msg} autoCloseTime={5000} />}
+        {token && (
+          <>
+            <Booking
+              userId={userId}
+              msg={msg}
+              handleMessage={handleMessage}
+              bookings={bookings}
+              getBookings={getBookings}
+            />
+            <button className={styles.navButton} onClick={handleLogOut}>
+              Logout
+            </button>
+            <span style={{ color: "#fff" }}>{fullName}</span>
+          </>
         )}
-        {!user && (
+        {!token && (
           <>
             <button className={styles.navButton} onClick={handleLoginClick}>
               Login
@@ -55,6 +73,6 @@ const Navbar = () => {
       </div>
     </nav>
   );
-};
+}
 
 export default Navbar;

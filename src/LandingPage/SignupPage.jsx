@@ -149,7 +149,7 @@ const SignupPage = () => {
       // Redirect the user to the landing page
       navigate("/");
     }
-    console.log("Signup data:", signupData);
+    //console.log("Signup data:", signupData);
   };
 
   const handleSelectLocation = (e) => {

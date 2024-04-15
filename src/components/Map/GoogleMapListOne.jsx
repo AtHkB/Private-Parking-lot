@@ -1,18 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
 import { svgMarker, encodeSVG } from "./helpers/svgHelper";
 import styles from "../MapPage.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import locationsString from "../../api/getAllLocations";
-import { SpinnerDotted } from "spinners-react";
+import useAuthToken from "../../helpers/useAuthToken";
 import Footer from "../Footer";
 
-const GoogleMapListOne = (user) => {
+const GoogleMapListOne = ({ token, msg, handleMessage }) => {
   const navigate = useNavigate();
+  const mapRef = useRef(null);
+  const decodeTokenData = useAuthToken(token);
+  const [position, setPosition] = useState({
+    lat: 48.213594,
+    lng: 11.574128,
+  });
   const [selectedPosition, setSelectedPosition] = useState(null);
   const [searchParams] = useSearchParams();
-  //const parkings = JSON.parse(locationsString.replaceAll("_id", "id"));
-  //const [locations, setLocations] = useState(parkings.parkinSpot);
   const [locations, setLocations] = useState([]);
 
   const handleMarkerCilick = (evt) => {
@@ -35,30 +38,34 @@ const GoogleMapListOne = (user) => {
     const startDate = searchParams.get("startDate");
     const endDate = searchParams.get("endDate");
     const { id } = selectedPosition;
-    console.log("uuser", user.user);
+    // console.log("uuser", decodeTokenData.userId);
+    // console.log("token", token);
+
     const response = await fetch(import.meta.env.VITE_BOOKING_CREATE, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${user.user.token}`,
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userID: user.user.id,
+        userID: decodeTokenData.userId,
         parkingspotID: id,
         startDate,
         endDate,
       }),
     });
     const data = await response.json();
-    console.log("data", data?.message);
+    //console.log("data", data?.message);
     const message = data?.message
       ? "in this time booking not posible please change yout time ot spot."
       : "booking done successful.";
-    localStorage.setItem(
-      "booking-request-response-message",
-      JSON.stringify(message)
-    );
+    localStorage.setItem("msg", JSON.stringify(message));
+    handleMessage(message);
     return navigate("/");
+  };
+  const onMarkerDragEnd = (evt) => {
+    console.log(evt.latLng.lat(), evt.latLng.lng());
+    setSelectedPosition({ lat: evt.latLng.lat(), lng: evt.latLng.lng() });
   };
   useEffect(() => {
     const getLocations = async () => {
@@ -68,24 +75,20 @@ const GoogleMapListOne = (user) => {
         response = response.replaceAll("_id", "id");
         const data = await JSON.parse(response);
         setLocations(data.parkinSpot);
-        console.log("DATA: ", data);
+        //        console.log("DATA: ", data);
       } catch (error) {
         console.error("Error fetching Locations:", error);
       }
     };
     getLocations();
   }, []);
+
   return (
-    <div>
+    <>
       <div className={styles.mapPageContainer}>
         {locations.length == 0 && (
-          <div className={styles.spinnerContainer}>
-            <SpinnerDotted
-              size={90}
-              thickness={145}
-              speed={100}
-              color="rgba(57, 105, 172, 1)"
-            />
+          <div>
+            <h1>Loading ...</h1>
           </div>
         )}
         {locations.length !== 0 && (
@@ -137,9 +140,11 @@ const GoogleMapListOne = (user) => {
               <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAP_API_KEY}>
                 <Map
                   style={{ width: "80vw", height: "100vh" }}
-                  center={locations[0].location[0]}
+                  defaultCenter={position}
                   defaultZoom={12}
                   gestureHandling={"greedy"}
+                  disableDefaultUI={true}
+                  mapId={import.meta.env.VITE_GOOGLE_MAP_ID}
                 >
                   {locations &&
                     locations.map((item) => {
@@ -157,6 +162,8 @@ const GoogleMapListOne = (user) => {
                             scale: 7,
                           }}
                           onClick={handleMarkerCilick}
+                          draggable={true}
+                          onDragEnd={onMarkerDragEnd}
                         />
                       );
                     })}
@@ -167,7 +174,7 @@ const GoogleMapListOne = (user) => {
         )}
       </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

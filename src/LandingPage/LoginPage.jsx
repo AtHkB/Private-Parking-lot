@@ -4,6 +4,7 @@ import styles from "./LoginPage.module.css";
 import { useNavigate } from "react-router-dom";
 import backgroundImage from "../assets/new1.jpg";
 import { SpinnerDotted } from "spinners-react";
+import { stringResources } from "../assets/resources";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const LoginPage = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
-
+    // TODO: User then and catch to simplify the code.
     const data = await response.json();
     if (!response.ok) {
       setIsLoading(false);
@@ -38,7 +39,7 @@ const LoginPage = () => {
     }
 
     if (response.ok) {
-      localStorage.setItem("user", JSON.stringify(data));
+      localStorage.setItem("token", JSON.stringify(data.token));
       setIsLoading(false);
       login(data.token);
       navigate("/");
@@ -67,7 +68,7 @@ const LoginPage = () => {
       ) : (
         <form onSubmit={handleLoginSubmit} className={styles.loginForm}>
           <div className={styles.checkboxWrapper}>
-            <h4>Are you a parking owner?</h4>
+            <h4>{stringResources.captions.parkingOwnerCaption}</h4>
             <input
               id="checkboxInput"
               type="checkbox"
