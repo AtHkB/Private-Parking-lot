@@ -94,7 +94,7 @@
 }
 
 .fsocialIcon:hover {
-  color: #253d5f;
+  color: rgba(25, 53, 234, 0.854);
 }
 
 .frightSection {
@@ -129,7 +129,7 @@
 .flink:hover {
   text-decoration: none;
   transform: translateX(10px); /* Move the link 5px to the right on hover */
-  color: #253d5f;
+  color: rgba(25, 53, 234, 0.854);
 }
 
 .fcopyRight {
