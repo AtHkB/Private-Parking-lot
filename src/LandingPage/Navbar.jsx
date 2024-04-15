@@ -1,22 +1,21 @@
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/authContext";
 import { Link } from "react-router-dom";
 import useAuthToken from "../helpers/useAuthToken";
+import useBookings from "../helpers/useBookings";
 import parkLogo from "../assets/Private-parking-4-4-2024 (1).png";
 import styles from "./Navbar.module.css";
 import Booking from "./Booking";
+import Message from "../components/Messages";
 
-function Navbar({ token }) {
-  const decodeTokenData = useAuthToken(token);
-  //console.log("decodeTokenData", decodeTokenData);
+function Navbar({ token, msg, handleMessage }) {
   const navigate = useNavigate();
+  const { userId, fullName } = useAuthToken(token);
+  const { bookings, getBookings } = useBookings(userId);
 
   const { logout } = useContext(AuthContext);
 
-  const bookingResponse = localStorage.getItem(
-    "booking-request-response-message"
-  );
   const handleLoginClick = () => {
     navigate("/login");
   };
@@ -30,6 +29,11 @@ function Navbar({ token }) {
     navigate("/signup");
   };
 
+  useEffect(() => {
+    if (msg) {
+      handleMessage(msg);
+    }
+  }, [msg]);
   return (
     <nav className={styles.navbar}>
       <div className={styles.logoContainer}>
@@ -39,14 +43,20 @@ function Navbar({ token }) {
       </div>
 
       <div className={styles.linksContainer}>
-        {bookingResponse && <p>{bookingResponse}</p>}
+        {msg && <Message message={msg} autoCloseTime={5000} />}
         {token && (
           <>
-            <Booking userinfo={decodeTokenData} />
+            <Booking
+              userId={userId}
+              msg={msg}
+              handleMessage={handleMessage}
+              bookings={bookings}
+              getBookings={getBookings}
+            />
             <button className={styles.navButton} onClick={handleLogOut}>
               Logout
             </button>
-            <span>{decodeTokenData.fullName}</span>
+            <span>{fullName}</span>
           </>
         )}
         {!token && (

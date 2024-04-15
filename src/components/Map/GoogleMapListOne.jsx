@@ -1,15 +1,24 @@
-import { useEffect, useState } from "react";
-import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
+import { useEffect, useState, useRef } from "react";
+import {
+  APIProvider,
+  Map,
+  Marker,
+  AdvancedMarker,
+} from "@vis.gl/react-google-maps";
 import { svgMarker, encodeSVG } from "./helpers/svgHelper";
 import styles from "../MapPage.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import useAuthToken from "../../helpers/useAuthToken";
 //import locationsString from "../../api/getAllLocations";
 
-const GoogleMapListOne = ({ token }) => {
+const GoogleMapListOne = ({ token, msg, handleMessage }) => {
   const navigate = useNavigate();
+  const mapRef = useRef(null);
   const decodeTokenData = useAuthToken(token);
-
+  const [position, setPosition] = useState({
+    lat: 48.213594,
+    lng: 11.574128,
+  });
   const [selectedPosition, setSelectedPosition] = useState(null);
   const [searchParams] = useSearchParams();
   //const parkings = JSON.parse(locationsString.replaceAll("_id", "id"));
@@ -36,8 +45,8 @@ const GoogleMapListOne = ({ token }) => {
     const startDate = searchParams.get("startDate");
     const endDate = searchParams.get("endDate");
     const { id } = selectedPosition;
-    console.log("uuser", decodeTokenData.userId);
-    console.log("token", token);
+    // console.log("uuser", decodeTokenData.userId);
+    // console.log("token", token);
 
     const response = await fetch(import.meta.env.VITE_BOOKING_CREATE, {
       method: "POST",
@@ -53,15 +62,17 @@ const GoogleMapListOne = ({ token }) => {
       }),
     });
     const data = await response.json();
-    console.log("data", data?.message);
+    //console.log("data", data?.message);
     const message = data?.message
       ? "in this time booking not posible please change yout time ot spot."
       : "booking done successful.";
-    localStorage.setItem(
-      "booking-request-response-message",
-      JSON.stringify(message)
-    );
+    localStorage.setItem("msg", JSON.stringify(message));
+    handleMessage(message);
     return navigate("/");
+  };
+  const onMarkerDragEnd = (evt) => {
+    console.log(evt.latLng.lat(), evt.latLng.lng());
+    setSelectedPosition({ lat: evt.latLng.lat(), lng: evt.latLng.lng() });
   };
   useEffect(() => {
     const getLocations = async () => {
@@ -78,6 +89,7 @@ const GoogleMapListOne = ({ token }) => {
     };
     getLocations();
   }, []);
+
   return (
     <div className={styles.mapPageContainer}>
       {locations.length == 0 && (
@@ -129,9 +141,11 @@ const GoogleMapListOne = ({ token }) => {
             <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAP_API_KEY}>
               <Map
                 style={{ width: "80vw", height: "100vh" }}
-                center={locations[0].location[0]}
+                defaultCenter={position}
                 defaultZoom={12}
                 gestureHandling={"greedy"}
+                disableDefaultUI={true}
+                mapId={import.meta.env.VITE_GOOGLE_MAP_ID}
               >
                 {locations &&
                   locations.map((item) => {
@@ -149,6 +163,8 @@ const GoogleMapListOne = ({ token }) => {
                           scale: 7,
                         }}
                         onClick={handleMarkerCilick}
+                        draggable={true}
+                        onDragEnd={onMarkerDragEnd}
                       />
                     );
                   })}
