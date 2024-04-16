@@ -54,7 +54,7 @@ const SearchBar = () => {
                   type="text"
                   value={query}
                   onChange={handleChange}
-                  placeholder="Search"
+                  placeholder="Munich"
                   className={styles.searchInput}
                 />
                 <label htmlFor="startDate" className={styles.label}>
