@@ -49,6 +49,7 @@ function Booking({ handleMessage, msg, bookings, getBookings, userId }) {
     const rand = Math.floor(Math.random() * 100);
     handleMessage(`you are already checkout!.${rand}`);
   };
+
   useEffect(() => {
     if (userId) {
       getBookings(userId);
@@ -76,7 +77,9 @@ function Booking({ handleMessage, msg, bookings, getBookings, userId }) {
                   aria-label="A jagged admit one pink ticket, with serial number 123456 over a white background"
                 >
                   <p className={styles.ticketp}>
-                    <span className={styles.ticketSpan}>try Check in !</span>
+                    <span className={styles.ticketSpan}>
+                      Check in !<br /> {item?.parkingSpots[0]?.streetName}
+                    </span>
                   </p>
                 </div>
               )}
@@ -88,11 +91,14 @@ function Booking({ handleMessage, msg, bookings, getBookings, userId }) {
                   aria-label="A jagged admit one pink ticket, with serial number 123456 over a white background"
                 >
                   <p className={styles.ticketp}>
-                    <span className={styles.ticketSpan}>try Check out!</span>
+                    <span className={styles.ticketSpan}>
+                      Check out !
+                      <br /> {item?.parkingSpots[0]?.streetName}
+                    </span>
                   </p>
                 </div>
               )}
-              {item.bookingStatus === BookingStatus.CHECKOUT && (
+              {/* {item.bookingStatus === BookingStatus.CHECKOUT && (
                 <div
                   onClick={noAction}
                   className={styles.ticket}
@@ -101,11 +107,11 @@ function Booking({ handleMessage, msg, bookings, getBookings, userId }) {
                 >
                   <p className={styles.ticketp}>
                     <span className={styles.ticketSpan}>
-                      already checked out !
+                      done !<br /> {item?.parkingSpots[0]?.streetName}
                     </span>
                   </p>
                 </div>
-              )}
+              )} */}
             </div>
           );
         })}

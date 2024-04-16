@@ -38,7 +38,7 @@
 }
 :root {
   --border-color: #d43b39;
-  --color-hover: #e6e6e6;
+  --color-hover: #000;
 
   --red: #f54949;
   --text-black: #322523;
@@ -69,9 +69,9 @@ svg {
 
 .ticketp {
   z-index: 2;
-  padding: 0.8rem 1.2rem;
+  padding: 1rem 1.2rem 0.5rem;
   position: relative;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   font-stretch: 85%;
   font-weight: 400;
   text-transform: uppercase;
@@ -85,21 +85,31 @@ svg {
 }
 
 .ticketSpan {
-  border: 3.5px solid var(--border-color);
-  padding: 0 0.75rem;
+  border: 0.3rem dashed var(--border-color);
+  padding: 0.5rem 0.75rem;
+  width: 6rem;
+  background-color: #eaeaea;
+  color: #333;
 }
 .ticket :hover {
   color: var(--color-hover);
+  font-weight: 800;
+}
+.ticketSpan :hover {
+  background-color: #666;
 }
 .ticketp::after,
 .ticketp::before {
+  padding: 0.3rem;
   content: "Ticket.";
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-stretch: 85%;
-  font-weight: 200;
+  font-weight: 800;
   writing-mode: vertical-lr;
-  border: 3.5px solid var(--border-color);
+  border: 0.3rem solid var(--border-color);
   letter-spacing: 1px;
+  background-color: #eaeaea;
+  color: #333;
 }
 .ticketp::after {
   border-left: none;
