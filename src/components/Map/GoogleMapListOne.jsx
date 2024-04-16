@@ -58,11 +58,14 @@ const GoogleMapListOne = ({ token, msg, handleMessage }) => {
     const data = await response.json();
     //console.log("data", data?.message);
     const message = data?.message
-      ? "in this time booking not posible please change yout time ot spot."
+      ? "in this time booking not posible please change your time or spot. the parking is not free!"
       : "booking done successful.";
-    localStorage.setItem("msg", JSON.stringify(message));
-    handleMessage(message);
-    return navigate("/");
+
+    const rand = Math.floor(Math.random() * 100);
+    handleMessage(`${message}${rand}`);
+    if (message.includes("successful")) {
+      return navigate("/");
+    }
   };
   const onMarkerDragEnd = (evt) => {
     console.log(evt.latLng.lat(), evt.latLng.lng());

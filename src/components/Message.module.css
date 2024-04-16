@@ -2,3 +2,8 @@
   position: absolute;
   background-color: red;
 }
+.toast {
+  padding: 5rem;
+  width: 40%;
+  top: 15%;
+}

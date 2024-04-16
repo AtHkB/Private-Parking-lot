@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import style from "./Message.module.css";
 
 function Message({ message, autoCloseTime }) {
   let arrMsg;
@@ -14,7 +15,7 @@ function Message({ message, autoCloseTime }) {
       position: "top-center",
       autoClose: autoCloseTime,
       hideProgressBar: false,
-      closeOnClick: true,
+      closeButton: false,
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
@@ -26,6 +27,6 @@ function Message({ message, autoCloseTime }) {
       localStorage.removeItem("msg");
     }
   }, [message]);
-  return <ToastContainer />;
+  return <ToastContainer className={style.toast} />;
 }
 export default Message;
