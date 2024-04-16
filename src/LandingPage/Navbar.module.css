@@ -53,3 +53,13 @@ body {
   /* background-color: #3578c7;*/
   color: #ab1d1d;
 }
+.navFullName {
+  margin: 10%;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  width: 15rem;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  transition: color 0.3s;
+}
