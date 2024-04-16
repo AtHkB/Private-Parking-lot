@@ -15,7 +15,6 @@
   max-height: 27%;
   bottom: 0;
   right: 0%;
-  width: 75%;
   background-color: #000000;
   color: #ffffff;
   padding: 10px;
@@ -25,7 +24,7 @@
   /* border: #e8d6be 1px solid;*/
   top: 0%;
   /* max-width: 1350px; */
-  min-width: 100vw;
+  min-width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: space-around;
@@ -133,7 +132,7 @@
 }
 
 .fcopyRight {
+  justify-content: center;
   text-align: center;
   margin-top: 0;
-  margin-left: 60%;
 }
