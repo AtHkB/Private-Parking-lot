@@ -57,6 +57,30 @@
   margin-bottom: 1rem;
   color: rgba(85, 103, 224, 0.917);
 }
+.bookButtonContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+  padding: 5px 15px;
+  transition: 0.5s;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.bookButtonContainer > button {
+  background-color: transparent;
+  border: none;
+  color: rgb(252, 227, 193);
+  font-size: large;
+}
+.bookButtonContainer > button:hover {
+  color: rgb(169, 30, 44);
+  transition: 0.5s;
+  cursor: pointer;
+}
 
 .suggestionCard {
   border: 1px solid #12161ee2;

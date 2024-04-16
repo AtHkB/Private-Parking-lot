@@ -7,6 +7,7 @@ import threeSteps from "../assets/lalalala.png";
 import styles from "./SearchBar.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
@@ -141,6 +142,7 @@ const SearchBar = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

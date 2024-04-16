@@ -5,6 +5,7 @@ import styles from "../MapPage.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import useAuthToken from "../../helpers/useAuthToken";
 import Footer from "../Footer";
+import { SpinnerDotted } from "spinners-react";
 
 const GoogleMapListOne = ({ token, msg, handleMessage }) => {
   const navigate = useNavigate();
@@ -87,8 +88,13 @@ const GoogleMapListOne = ({ token, msg, handleMessage }) => {
     <>
       <div className={styles.mapPageContainer}>
         {locations.length == 0 && (
-          <div>
-            <h1>Loading ...</h1>
+          <div className={styles.spinnerContainer}>
+            <SpinnerDotted
+              size={90}
+              thickness={145}
+              speed={100}
+              color="rgba(57, 105, 172, 1)"
+            />
           </div>
         )}
         {locations.length !== 0 && (
@@ -112,16 +118,16 @@ const GoogleMapListOne = ({ token, msg, handleMessage }) => {
                     {selectedPosition.postalCode}&nbsp;&nbsp;&nbsp; Price:&nbsp;
                     €{selectedPosition.price}
                   </h3>
-                  <h3 className={styles.hourlyPrice}>
-                    <button onClick={handleBooking}>Book!</button>
+                  <p className={styles.bookButtonContainer}>
+                    <button onClick={handleBooking}>Book</button>
                     <button
                       onClick={() => {
                         setSelectedPosition(null);
                       }}
                     >
-                      back!
+                      back
                     </button>
-                  </h3>
+                  </p>
                 </div>
               </div>
             ) : (
