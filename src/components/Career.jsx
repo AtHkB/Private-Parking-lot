@@ -16,7 +16,9 @@ function Career() {
           <p>
             As a developer, you'll contribute to creating seamless solutions
             that help users easily find parking spots, enhancing their overall
-            enjoyment of the process.
+            enjoyment of the process. Join our dynamic team of developers and be
+            at the forefront of crafting innovative solutions that revolutionize
+            the way people experience urban mobility.
           </p>
         </div>
 
