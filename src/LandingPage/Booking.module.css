@@ -94,9 +94,11 @@ svg {
 .ticket :hover {
   color: var(--color-hover);
   font-weight: 800;
+  cursor: pointer;
 }
 .ticketSpan :hover {
   background-color: #666;
+  cursor: pointer;
 }
 .ticketp::after,
 .ticketp::before {
