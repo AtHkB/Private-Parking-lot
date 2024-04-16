@@ -28,60 +28,6 @@ const Contact = () => {
   const { login } = useContext(AuthContext);
   const [isParkingOwner, setIsParkingOwner] = useState(false); // State for checkbox
 
-  // BEGINNING OF MAP INSERTION
-  const [showModal, setShowModal] = useState(false);
-  const [map, setMap] = useState(null);
-  const [currentPosition, setCurrentPosition] = useState(null);
-  const [selectedPosition, setSelectedPosition] = useState(null);
-
-  const containerStyle = {
-    width: "400PX",
-    height: "400PX",
-  };
-
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setCurrentPosition({ lat: latitude, lng: longitude });
-          setSelectedPosition({ lat: latitude, lng: longitude });
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
-    } else {
-      console.error("Geolocation is not supported by this browser.");
-    }
-  }, []);
-
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
-  });
-
-  const onLoad = useCallback(
-    function callback(map) {
-      const bounds = new window.google.maps.LatLngBounds(currentPosition);
-      map.fitBounds(bounds);
-      setMap(map);
-
-      map.addListener("click", (event) => {
-        setSelectedPosition({
-          lat: event.latLng.lat(),
-          lng: event.latLng.lng(),
-        });
-      });
-    },
-    [currentPosition]
-  );
-
-  const onUnmount = useCallback(function callback(map) {
-    setMap(null);
-  }, []);
-  // END OF MAP INSERTION
-
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
 
