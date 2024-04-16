@@ -48,15 +48,12 @@ const Footer = () => {
             <p className={styles.fpexploreadmin}>EXPLORE</p>
 
             <Link to="/About" className={styles.flink}>
-              {" "}
               About
             </Link>
             <Link to="/contact" className={styles.flink}>
-              {" "}
               Contact
             </Link>
             <Link to="/Career" className={styles.flink}>
-              {" "}
               Career
             </Link>
           </div>
