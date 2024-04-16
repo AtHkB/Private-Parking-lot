@@ -82,6 +82,7 @@ svg {
   filter: url("#warp");
   mix-blend-mode: multiply;
   transform: scale(0.95) translatex(-6px);
+  cursor: pointer;
 }
 
 .ticketSpan {
@@ -90,6 +91,7 @@ svg {
   width: 6rem;
   background-color: #eaeaea;
   color: #333;
+  cursor: pointer;
 }
 .ticket :hover {
   color: var(--color-hover);
