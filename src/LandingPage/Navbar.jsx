@@ -54,10 +54,10 @@ function Navbar({ token, msg, handleMessage }) {
               bookings={bookings}
               getBookings={getBookings}
             />
+            <span className={styles.navFullName}>{fullName}</span>
             <button className={styles.navButton} onClick={handleLogOut}>
               Logout
             </button>
-            <span style={{ color: "#fff" }}>{fullName}</span>
           </>
         )}
         {!token && (

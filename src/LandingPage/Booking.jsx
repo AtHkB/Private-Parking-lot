@@ -69,25 +69,42 @@ function Booking({ handleMessage, msg, bookings, getBookings, userId }) {
           return (
             <div key={index}>
               {item.bookingStatus === BookingStatus.BOOK && (
-                <button
+                <div
                   onClick={() => ckeckinAction(item._id, userId)}
-                  className={styles.navBookingButton}
+                  className={styles.ticket}
+                  role="img"
+                  aria-label="A jagged admit one pink ticket, with serial number 123456 over a white background"
                 >
-                  Parking Spot - try Checkin!
-                </button>
+                  <p className={styles.ticketp}>
+                    <span className={styles.ticketSpan}>try Check in !</span>
+                  </p>
+                </div>
               )}
               {item.bookingStatus === BookingStatus.CHECKIN && (
-                <button
+                <div
                   onClick={() => ckeckoutAction(item._id, userId)}
-                  className={styles.navBookingButton}
+                  className={styles.ticket}
+                  role="img"
+                  aria-label="A jagged admit one pink ticket, with serial number 123456 over a white background"
                 >
-                  Parking Spot - try Checkout!
-                </button>
+                  <p className={styles.ticketp}>
+                    <span className={styles.ticketSpan}>try Check out!</span>
+                  </p>
+                </div>
               )}
               {item.bookingStatus === BookingStatus.CHECKOUT && (
-                <button className={styles.navBookingButton} onClick={noAction}>
-                  Parking Spot - you are already checkout!
-                </button>
+                <div
+                  onClick={noAction}
+                  className={styles.ticket}
+                  role="img"
+                  aria-label="A jagged admit one pink ticket, with serial number 123456 over a white background"
+                >
+                  <p className={styles.ticketp}>
+                    <span className={styles.ticketSpan}>
+                      already checked out !
+                    </span>
+                  </p>
+                </div>
               )}
             </div>
           );
