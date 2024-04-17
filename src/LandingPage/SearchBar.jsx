@@ -22,6 +22,9 @@ const SearchBar = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!startDate && !endDate) {
+      return;
+    }
 
     const queryString = new URLSearchParams({
       q: query,
