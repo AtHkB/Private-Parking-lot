@@ -12,9 +12,10 @@ const GoogleMapListOne = ({ token, msg, handleMessage }) => {
   const mapRef = useRef(null);
   const decodeTokenData = useAuthToken(token);
   const [position, setPosition] = useState({
-    lat: 48.213594,
-    lng: 11.574128,
+    lat: 48.13299255224677,
+    lng: 11.58192322563543,
   });
+
   const [selectedPosition, setSelectedPosition] = useState(null);
   const [searchParams] = useSearchParams();
   const [locations, setLocations] = useState([]);

@@ -31,7 +31,10 @@ const SignupPage = () => {
   // BEGINNING OF MAP INSERTION
   const [showModal, setShowModal] = useState(false);
   const [map, setMap] = useState(null);
-  const [currentPosition, setCurrentPosition] = useState(null);
+  const [currentPosition, setCurrentPosition] = useState({
+    lat: 48.13299255224677,
+    lng: 11.58192322563543,
+  });
   const [selectedPosition, setSelectedPosition] = useState(null);
 
   const containerStyle = {
@@ -44,7 +47,7 @@ const SignupPage = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          setCurrentPosition({ lat: latitude, lng: longitude });
+          setCurrentPosition(currentPosition);
           setSelectedPosition({ lat: latitude, lng: longitude });
         },
         (error) => {
@@ -58,7 +61,7 @@ const SignupPage = () => {
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAP_API_KEY,
   });
 
   const onLoad = useCallback(
@@ -401,7 +404,7 @@ const SignupPage = () => {
                   <GoogleMap
                     mapContainerStyle={containerStyle}
                     center={currentPosition}
-                    zoom={9}
+                    zoom={12}
                     onLoad={onLoad}
                     onUnmount={onUnmount}
                   >

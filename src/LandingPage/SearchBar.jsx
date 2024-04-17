@@ -80,7 +80,7 @@ const SearchBar = () => {
                   dateFormat="MMMM d, yyyy h:mm aa"
                   filterTime={handleFilterPassedTime}
                   className={styles.datePicker}
-                  placeholderText="Select Date"
+                  placeholderText="Date - Time"
                 />
                 <span className={styles.dateSeparator}>to</span>
                 <DatePicker

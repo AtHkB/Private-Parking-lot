@@ -41,7 +41,7 @@
 .streetName {
   font-weight: 500;
   text-align: center;
-  background-color: #d2111185;
+  background-color: #ebe6e685;
   color: #fff;
   margin-top: 0;
   margin-bottom: 1rem;
@@ -49,6 +49,10 @@
   text-decoration: none;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
+  background: -webkit-linear-gradient(#999999, #333);
+  /* -webkit-background-clip: text; */
+  /* -webkit-text-fill-color: transparent; */
+  font-size: 1.6rem;
 }
 
 .hourlyPrice {

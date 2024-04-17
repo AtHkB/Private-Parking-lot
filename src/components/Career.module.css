@@ -30,7 +30,7 @@ h2 {
   font-size: 2.3rem;
 }
 
-h3 {
+.CareerContainer h3 {
   display: flex;
   justify-content: center;
   background: -webkit-linear-gradient(#eee, #333);
