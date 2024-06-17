@@ -113,12 +113,12 @@ const GoogleMapListOne = ({ token, msg, handleMessage }) => {
                     {selectedPosition.title}
                   </h3>
                   <h3 className={styles.hourlyPrice}>
-                    Street:{selectedPosition.streetName} &nbsp;&nbsp;&nbsp;
-                    number:
+                    Street:&nbsp;
+                    {selectedPosition.streetName} &nbsp;&nbsp; number:&nbsp;
                     {selectedPosition.hauseNumber}
                   </h3>
                   <h3 className={styles.hourlyPrice}>
-                    Postal:
+                    Postal Code:&nbsp;
                     {selectedPosition.postalCode}&nbsp;&nbsp;&nbsp; Price:&nbsp;
                     €{selectedPosition.price}
                   </h3>

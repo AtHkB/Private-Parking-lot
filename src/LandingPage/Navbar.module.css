@@ -7,7 +7,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: rgb(0, 0, 0);
+  background-color: #fff;
 }
 
 .navbar {
@@ -41,7 +41,7 @@ body {
   font-size: 1.7rem;
   font-weight: bold;
 
-  color: #fff;
+  color: #000;
   background-color: transparent;
   border: none;
   border-radius: 0.25rem;
@@ -58,7 +58,7 @@ body {
   padding: 0.5rem 1rem;
   font-size: 1.1rem;
   width: 15rem;
-  color: #fff;
+  color: #000;
   background-color: transparent;
   border: none;
   transition: color 0.3s;

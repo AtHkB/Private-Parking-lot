@@ -108,7 +108,7 @@ export default function MapPage() {
         ) : selectedParking ? (
           <div className={styles.suggestionCardsContainer}>
             <div className={styles.suggestionCard} key={selectedParking.id}>
-              <h3 className={styles.streetName}>Street name(from form)</h3>
+              {/* <h3 className={styles.streetName}>Street name(from form)</h3> */}
               <h3 className={styles.hourlyPrice}>
                 Hourly Price: ${selectedParking.location.hourlyPrice}
               </h3>

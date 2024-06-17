@@ -1,7 +1,7 @@
 import styles from "./Footer.module.css";
 import { FaInstagram, FaYoutube, FaPinterest, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import parkLogo from "../assets/whiteLogo.png";
+import parkLogo from "../assets/Private-parking-4-4-2024.png";
 
 const Footer = () => {
   return (

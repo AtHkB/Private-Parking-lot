@@ -22,7 +22,7 @@ body {
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background-size: cover;
   background-position: center top;
   min-height: 100vh;
@@ -43,7 +43,6 @@ body {
 }
 
 .searchForm {
-  width: 80%;
   padding: 0.3rem;
   background-color: #a6a09fa8;
   border-radius: 0.25rem;
@@ -115,15 +114,18 @@ body {
   flex-direction: column;
 }
 
-/*.landingWrapper {
-  gap: 2rem;
-} */
+.landingWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
 
 .search {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 26rem;
+  /* margin-top: 26rem; */
 }
 
 .searchForm {
@@ -131,10 +133,5 @@ body {
 }
 
 .threeStepsimage {
-  display: inline-block;
-  margin-top: 0px;
-  width: auto; /* Allow the container width to adjust based on its content */
-  max-width: 100%; /* Set a maximum width to ensure it doesn't exceed its parent */
-  height: fit-content; /* Resize the container to fit its content vertically */
-  opacity: 0.78;
+  margin-left: 16%;
 }

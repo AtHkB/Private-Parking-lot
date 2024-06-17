@@ -19,8 +19,9 @@
   min-height: 100vh;
   overflow-y: auto;
   padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.517);
-  box-shadow: 0px 9px 30px rgba(25, 53, 234, 0.945);
+  background-color: #fff;
+  border: 1px solid rgb(0, 54, 202);
+  /* box-shadow: 0px 9px 30px rgba(25, 53, 234, 0.945); */
   border-radius: 0.5rem;
 }
 
@@ -32,7 +33,7 @@
   border: 1px solid #12161ee2;
   border-radius: 0.5rem;
   margin-bottom: 1rem;
-  box-shadow: 0px 9px 30px rgba(25, 53, 234, 0.427);
+  /* box-shadow: 0px 9px 30px rgba(25, 53, 234, 0.427); */
 }
 
 .suggestionCard a {
@@ -59,7 +60,7 @@
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  color: rgba(85, 103, 224, 0.917);
+  color: rgba(0, 0, 0, 0.917);
 }
 .bookButtonContainer {
   display: flex;
@@ -70,14 +71,14 @@
   transition: 0.5s;
   font-size: 1.2rem;
   font-weight: bold;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
 }
 .bookButtonContainer > button {
   background-color: transparent;
   border: none;
-  color: rgb(252, 227, 193);
+  color: rgb(16, 61, 211);
   font-size: large;
 }
 .bookButtonContainer > button:hover {
@@ -87,7 +88,7 @@
 }
 
 .suggestionCard {
-  border: 1px solid #12161ee2;
+  border: 1px solid rgb(16, 61, 211);
   border-radius: 0.5rem;
   margin-bottom: 1rem;
   text-decoration: none; /* Apply text-decoration to the card itself */

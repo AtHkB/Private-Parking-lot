@@ -7,16 +7,16 @@
 .footer {
   display: flex;
   flex-direction: column;
-  background-color: #253d5f;
+  background-color: #fff;
   /* border: #83500e 1px solid;*/
-  color: #ffffff;
+  color: #000;
   padding: 40px 20px;
   /* position: fixed; */
   max-height: 27%;
   bottom: 0;
   right: 0%;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #fff;
+  color: #000;
   padding: 10px;
 }
 
@@ -84,7 +84,7 @@
 }
 
 .fsocialIcon {
-  color: #ffffff;
+  color: #000;
   font-size: 30px;
   margin-right: 10px;
   margin-bottom: 10px;
@@ -118,7 +118,7 @@
 }
 
 .flink {
-  color: #ffffff;
+  color: #000;
   text-align: left;
   text-decoration: none;
   display: block;
