@@ -8,7 +8,7 @@ function Career() {
 
       <div className={styles.CareerContainer}>
         <div className={styles.Saeed}>
-          <h2>Mr. Saeed</h2>
+          <h2>Saeed</h2>
           <p>
             As part of a creative team, I would say there is enough room to
             grow. For example, with the latest technology and cool events, we
@@ -19,7 +19,7 @@ function Career() {
         </div>
 
         <div className={styles.Ata}>
-          <h2>Mr. Ata</h2>
+          <h2>Ata</h2>
           <p>
             Join our dynamic team and explore endless opportunities for personal
             and professional growth. At our company, innovation is at the core
