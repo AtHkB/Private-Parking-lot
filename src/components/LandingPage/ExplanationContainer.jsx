@@ -1,4 +1,4 @@
-import explImage from "../assets/expl.png";
+import explImage from "../../assets/expl.png";
 
 const ExplanationContainer = () => {
   return (

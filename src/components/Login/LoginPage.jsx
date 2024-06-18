@@ -1,11 +1,11 @@
 import { useState, useContext } from "react";
-import { AuthContext } from "../context/authContext";
+import { AuthContext } from "../../context/authContext";
 import styles from "./LoginPage.module.css";
 import { useNavigate } from "react-router-dom";
-import backgroundImage from "../assets/a7.jpg";
+import backgroundImage from "../../assets/a7.jpg";
 import { SpinnerDotted } from "spinners-react";
-import { stringResources } from "../assets/resources";
-import Footer from "../components/Footer";
+import { stringResources } from "../../assets/resources";
+import Footer from "../../components/Footer/Footer";
 
 const LoginPage = () => {
   const navigate = useNavigate();

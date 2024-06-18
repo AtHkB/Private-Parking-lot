@@ -1,18 +1,18 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useContext, useState } from "react";
-import Navbar from "./LandingPage/Navbar";
-import SearchBar from "./LandingPage/SearchBar";
-import ExplanationContainer from "./LandingPage/ExplanationContainer";
-import LoginPage from "./LandingPage/LoginPage";
-import SignupPage from "./LandingPage/SignupPage";
-import AuthRouter from "./LandingPage/AuthRouter";
-import MapPage from "./components/MapPage";
+import Navbar from "./components/Navbar/Navbar";
+import SearchBar from "./components/LandingPage/SearchBar";
+import ExplanationContainer from "./components/LandingPage/ExplanationContainer";
+import LoginPage from "./components/Login/LoginPage";
+import SignupPage from "./components/Signup/SignupPage";
+import AuthRouter from "./components/LandingPage/AuthRouter";
+import MapPage from "./components/Map/MapPage";
 import { AuthContext } from "./context/authContext";
-import MainLayout from "./LandingPage/MainLayout";
+import MainLayout from "./components/LandingPage/MainLayout";
 import GoogleMapListOne from "./components/Map/GoogleMapListOne";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Career from "./components/Career";
+import About from "./components/About/About";
+import Contact from "./components/Contact/Contact";
+import Career from "./components/Career/Career";
 
 const App = () => {
   const { token } = useContext(AuthContext);

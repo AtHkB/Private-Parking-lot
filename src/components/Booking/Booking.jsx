@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Booking.module.css";
-import BookingStatus from "../enums/bookingStatus";
+import BookingStatus from "../../enums/bookingStatus";
 
 function Booking({ handleMessage, msg, bookings, getBookings, userId }) {
   const navigate = useNavigate();

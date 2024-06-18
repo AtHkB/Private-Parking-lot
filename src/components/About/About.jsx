@@ -1,5 +1,5 @@
 import styles from "./About.module.css";
-import backgroundPic from "../assets/new2.jpg";
+import backgroundPic from "../../assets/new2.jpg";
 
 const About = () => {
   return (

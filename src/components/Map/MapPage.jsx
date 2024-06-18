@@ -1,11 +1,11 @@
 import { useEffect, useState, useContext, useCallback } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
-import { AuthContext } from "../context/authContext";
+import { AuthContext } from "../../context/authContext";
 import { useParams } from "react-router";
-import parkings from "../api/parkings.json";
+// import parkings from "../api/parkings.json";
 import { Link } from "react-router-dom";
 import styles from "./MapPage.module.css";
-import Footer from "./Footer";
+import Footer from "../Footer/Footer";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SpinnerDotted } from "spinners-react";
 

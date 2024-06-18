@@ -1,11 +1,11 @@
 import { useState, useContext, useEffect, useCallback } from "react";
-import { AuthContext } from "../context/authContext";
+import { AuthContext } from "../../context/authContext";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import styles from "./SignupPage.module.css";
-import backgroundImage from "../assets/a7.jpg";
+import backgroundImage from "../../assets/a7.jpg";
 import { useParams, useNavigate } from "react-router";
 import { SpinnerDotted } from "spinners-react";
-import Footer from "../components/Footer";
+import Footer from "../Footer/Footer";
 
 const SignupPage = () => {
   const navigate = useNavigate();

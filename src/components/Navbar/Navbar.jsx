@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../context/authContext";
+import { AuthContext } from "../../context/authContext";
 import { Link } from "react-router-dom";
-import useBookings from "../helpers/useBookings";
-import useAuthToken from "../helpers/useAuthToken";
+import useBookings from "../../helpers/useBookings";
+import useAuthToken from "../../helpers/useAuthToken";
 //import parkLogo from "../assets/Private-parking-4-4-2024 (1).png";
-import parkLogo from "../assets/Private-parking-4-4-2024.png";
+import parkLogo from "../../assets/Private-parking-4-4-2024.png";
 import styles from "./Navbar.module.css";
-import Booking from "./Booking";
-import Message from "../components/Messages";
+import Booking from "../Booking/Booking";
+import Message from "../LandingPage/Messages";
 
 function Navbar({ token, msg, handleMessage }) {
   const navigate = useNavigate();

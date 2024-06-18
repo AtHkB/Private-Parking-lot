@@ -1,10 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
 import { svgMarker, encodeSVG } from "./helpers/svgHelper";
-import styles from "../MapPage.module.css";
+import styles from "./MapPage.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import useAuthToken from "../../helpers/useAuthToken";
-import Footer from "../Footer";
+import Footer from "../Footer/Footer";
 import { SpinnerDotted } from "spinners-react";
 
 const GoogleMapListOne = ({ token, msg, handleMessage }) => {

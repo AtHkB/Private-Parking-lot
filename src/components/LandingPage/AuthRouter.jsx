@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import LoginPage from "./LoginPage";
-import SignupPage from "./SignupPage";
+import LoginPage from "../Login/LoginPage";
+import SignupPage from "../Signup/SignupPage";
 
 const AuthRouter = () => {
   return (
