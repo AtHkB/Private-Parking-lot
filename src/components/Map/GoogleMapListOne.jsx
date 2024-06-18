@@ -59,8 +59,8 @@ const GoogleMapListOne = ({ token, msg, handleMessage }) => {
     const data = await response.json();
     //console.log("data", data?.message);
     const message = data?.message
-      ? "in this time booking not posible please change your time or spot. the parking is not free!"
-      : "booking done successful.";
+      ? "The parking is not available, please change your time or spot."
+      : "Booking is done successfuly.";
 
     const rand = Math.floor(Math.random() * 100);
     handleMessage(`${message}${rand}`);
@@ -114,7 +114,7 @@ const GoogleMapListOne = ({ token, msg, handleMessage }) => {
                   </h3>
                   <h3 className={styles.hourlyPrice}>
                     Street:&nbsp;
-                    {selectedPosition.streetName} &nbsp;&nbsp; number:&nbsp;
+                    {selectedPosition.streetName} &nbsp;&nbsp; Number:&nbsp;
                     {selectedPosition.hauseNumber}
                   </h3>
                   <h3 className={styles.hourlyPrice}>
@@ -140,7 +140,7 @@ const GoogleMapListOne = ({ token, msg, handleMessage }) => {
                   <div className={styles.suggestionCard} key={parking.id}>
                     <h3 className={styles.streetName}>{parking.title}</h3>
                     <h3 className={styles.hourlyPrice}>
-                      Price: ${parking.price}
+                      Price: €{parking.price}
                     </h3>
                   </div>
                 ))}

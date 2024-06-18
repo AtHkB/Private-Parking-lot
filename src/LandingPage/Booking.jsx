@@ -17,7 +17,7 @@ function Booking({ handleMessage, msg, bookings, getBookings, userId }) {
         }
       );
       if (response.ok) {
-        handleMessage("checkin was successful.");
+        handleMessage("Check in was successful.");
         const data = await response.json();
         getBookings(userId);
       }
@@ -37,7 +37,7 @@ function Booking({ handleMessage, msg, bookings, getBookings, userId }) {
         }
       );
       if (response.ok) {
-        handleMessage("checkout was successful.");
+        handleMessage("Check out was successful.");
         const data = await response.json();
         getBookings(userId);
       }
@@ -47,7 +47,7 @@ function Booking({ handleMessage, msg, bookings, getBookings, userId }) {
   };
   const noAction = async () => {
     const rand = Math.floor(Math.random() * 100);
-    handleMessage(`you are already checkout!.${rand}`);
+    handleMessage(`you already checked out!.${rand}`);
   };
 
   useEffect(() => {
@@ -62,7 +62,7 @@ function Booking({ handleMessage, msg, bookings, getBookings, userId }) {
       &nbsp;
       {!bookings && (
         <button className={styles.navNoBookingButton}>
-          Not find any reservation yet!
+          Not found any reservations yet!
         </button>
       )}
       {bookings &&
@@ -78,7 +78,8 @@ function Booking({ handleMessage, msg, bookings, getBookings, userId }) {
                 >
                   <p className={styles.ticketp}>
                     <span className={styles.ticketSpan}>
-                      Check in !<br /> {item?.parkingSpots[0]?.streetName}
+                      Check in!
+                      <br /> {item?.parkingSpots[0]?.streetName}
                     </span>
                   </p>
                 </div>
@@ -92,26 +93,12 @@ function Booking({ handleMessage, msg, bookings, getBookings, userId }) {
                 >
                   <p className={styles.ticketp}>
                     <span className={styles.ticketSpan}>
-                      Check out !
+                      Check out!
                       <br /> {item?.parkingSpots[0]?.streetName}
                     </span>
                   </p>
                 </div>
               )}
-              {/* {item.bookingStatus === BookingStatus.CHECKOUT && (
-                <div
-                  onClick={noAction}
-                  className={styles.ticket}
-                  role="img"
-                  aria-label="A jagged admit one pink ticket, with serial number 123456 over a white background"
-                >
-                  <p className={styles.ticketp}>
-                    <span className={styles.ticketSpan}>
-                      done !<br /> {item?.parkingSpots[0]?.streetName}
-                    </span>
-                  </p>
-                </div>
-              )} */}
             </div>
           );
         })}

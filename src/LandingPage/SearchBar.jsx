@@ -134,15 +134,15 @@ const SearchBar = () => {
                 </button>
               </div>
             </form>
+            <div className={styles.item}>
+              <img
+                src={threeSteps}
+                alt="Three Steps Image"
+                className={styles.threeStepsimage}
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <div className={styles.item}>
-        <img
-          src={threeSteps}
-          alt="Three Steps Image"
-          className={styles.threeStepsimage}
-        />
       </div>
       <Footer />
     </div>
