@@ -59,7 +59,7 @@ const GoogleMapListOne = ({ token, msg, handleMessage }) => {
     const data = await response.json();
     //console.log("data", data?.message);
     const message = data?.message
-      ? "The parking is not available, please change your time or spot."
+      ? "The parking is not available, please change the desired Time or Spot."
       : "Booking is done successfuly.";
 
     const rand = Math.floor(Math.random() * 100);

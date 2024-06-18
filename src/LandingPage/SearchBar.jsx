@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import backgroundImage from "../assets/background2.jpg";
 import myImage from "../assets/landing.png";
-import threeSteps from "../assets/lalalala.png";
+import threeSteps from "../assets/1-2.png";
 import styles from "./SearchBar.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -134,15 +134,15 @@ const SearchBar = () => {
                 </button>
               </div>
             </form>
-            <div className={styles.item}>
-              <img
-                src={threeSteps}
-                alt="Three Steps Image"
-                className={styles.threeStepsimage}
-              />
-            </div>
           </div>
         </div>
+      </div>
+      <div className={styles.item}>
+        <img
+          src={threeSteps}
+          alt="Three Steps Image"
+          className={styles.threeStepsimage}
+        />
       </div>
       <Footer />
     </div>

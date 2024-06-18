@@ -22,14 +22,13 @@ const About = () => {
         <div className={`${styles.descriptionContainer}`}>
           <p className={`${styles.description}`}>
             Welcome to PrivateParking, where the world of parking meets digital
-            innovation, brought to you by the dynamic trio: Mr. Saeed, Mr. Ata,
-            and Mr. Isak. <br /> With their blend of entrepreneurial spirit and
-            tech savvy, they&apos;ve transformed the parking landscape, making
-            it easier than ever to find or rent that perfect spot. Meet the
-            brains behind the scenes: Ata, the visionary navigator of our
-            parking revolution; Saeed, the logistical genius who ensures smooth
-            operations; and Isak, the coding virtuoso who brings our platform to
-            life. <br />
+            innovation, brought to you by the dynamic Duo: Ata and Saeed <br />
+            With their blend of entrepreneurial spirit and tech savvy,
+            they&apos;ve transformed the parking landscape, making it easier
+            than ever to find or rent that perfect spot.
+            <br /> Meet the brains behind the scenes: Ata, the visionary
+            navigator of our parking revolution and Saeed, the logistical genius
+            who ensures smooth operations. <br />
             <br /> At PrivateParking, we&apos;re more than just a parking
             solution - we&apos;re a community of drivers and space owners coming
             together to solve a common challenge. Whether you&apos;re a space
