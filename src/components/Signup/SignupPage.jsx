@@ -3,7 +3,7 @@ import { AuthContext } from "../../context/authContext";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import styles from "./SignupPage.module.css";
 import backgroundImage from "../../assets/a7.jpg";
-import { useParams, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { SpinnerDotted } from "spinners-react";
 import Footer from "../Footer/Footer";
 

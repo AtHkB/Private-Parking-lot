@@ -4,7 +4,6 @@ import { AuthContext } from "../../context/authContext";
 import { Link } from "react-router-dom";
 import useBookings from "../../helpers/useBookings";
 import useAuthToken from "../../helpers/useAuthToken";
-//import parkLogo from "../assets/Private-parking-4-4-2024 (1).png";
 import parkLogo from "../../assets/Private-parking-4-4-2024.png";
 import styles from "./Navbar.module.css";
 import Booking from "../Booking/Booking";

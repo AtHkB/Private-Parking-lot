@@ -15,7 +15,6 @@ const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const { login } = useContext(AuthContext);
-  const handleClick = () => setUserNormal(!userNormal);
   const handleLoginSubmit = async (e) => {
     const login_URL = userNormal
       ? import.meta.env.VITE_USER_LOGIN_URL
