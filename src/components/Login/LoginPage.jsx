@@ -21,8 +21,8 @@ const LoginPage = () => {
       : import.meta.env.VITE_USER_WITH_PARKING_LOGIN_URL;
     console.log("userNormal", userNormal);
     e.preventDefault();
-    // Add your login logic here
 
+    //Login logic
     setIsLoading(true);
     setError(null);
     const { email, password } = loginData;
@@ -31,7 +31,7 @@ const LoginPage = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
-    // TODO: User then and catch to simplify the code.
+
     const data = await response.json();
     if (!response.ok) {
       setIsLoading(false);

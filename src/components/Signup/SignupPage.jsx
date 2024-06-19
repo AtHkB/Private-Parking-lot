@@ -153,7 +153,6 @@ const SignupPage = () => {
       // Redirect the user to the landing page
       navigate("/");
     }
-    //console.log("Signup data:", signupData);
   };
 
   const handleSelectLocation = (e) => {
@@ -191,9 +190,7 @@ const SignupPage = () => {
             />
           </div>
         ) : (
-          <form
-            /* onSubmit={handleSignupSubmit} */ className={styles.signupForm}
-          >
+          <form className={styles.signupForm}>
             <div className={styles.checkboxWrapper}>
               <h4>Are you a parking owner?</h4>
               <input

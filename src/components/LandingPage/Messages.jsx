@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import style from "./Message.module.css";
+import style from "./Messages.module.css";
 
 function Message({ message, autoCloseTime }) {
   let arrMsg;

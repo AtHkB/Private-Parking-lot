@@ -40,7 +40,7 @@ const GoogleMapListOne = ({ token, msg, handleMessage }) => {
     const startDate = searchParams.get("startDate");
     const endDate = searchParams.get("endDate");
     const { id } = selectedPosition;
-    // console.log("uuser", decodeTokenData.userId);
+    // console.log("user", decodeTokenData.userId);
     // console.log("token", token);
 
     const response = await fetch(import.meta.env.VITE_BOOKING_CREATE, {
