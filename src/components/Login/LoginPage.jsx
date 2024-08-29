@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../../context/authContext";
 import styles from "./LoginPage.module.css";
 import { useNavigate } from "react-router-dom";
-import backgroundImage from "../../assets/parkingLot.jpeg";
+import backgroundImage from "../../assets/parking5.png";
 import { SpinnerDotted } from "spinners-react";
 import { stringResources } from "../../assets/resources";
 import Footer from "../../components/Footer/Footer";
